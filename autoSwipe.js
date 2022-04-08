@@ -77,32 +77,32 @@ function autoSwipe() {
     if (!isRun) {
       break;
     } else if(isRun) {
-      console.log("第" + i + "次，剩余" + (total - i) + "次");
+      // console.log("第" + i + "次，剩余" + (total - i) + "次");
       let back = textMatches(errorBack).boundsInside(0, 0, dw, dh ).findOnce();
       if (back) {
         if (back.visibleToUser()) {
           // 坐标根据屏幕分辨率调整
           click(80, 140);
           //size == 1080 ? click(80,140) : click(50,90);
-          console.log(back.text()) //错误页面返回
+          // console.log(back.text()) //错误页面返回
         } else {
-          console.log("……");
+          // console.log("……");
         }
       }
       let clickTip = textContains("继续看视频").boundsInside(0, 0, dw, dh ).findOnce();
       if (clickTip) {
         clickTip.click();
-        console.log("点击继续看视频"); //点击继续看视频
+        // console.log("点击继续看视频"); //点击继续看视频
       }
       let pic = textMatches(picPage).boundsInside(0, 0, dw, dh ).findOnce();
       let keyDislike = textMatches(dislikeReg).boundsInside(0, 0, dw, dh ).findOnce();
       if (pic) {
         directSwipe(); // 宁误刷，不停留
-        console.log('滑走: '+pic.text());
+        // console.log('滑走: '+pic.text());
       } else if (keyDislike) { // 不感兴趣
         if (keyDislike.visibleToUser()) { 
           dislike();
-          console.log('不感兴趣: '+keyDislike.text());
+          // console.log('不感兴趣: '+keyDislike.text());
         } else {
           delaySwipe();
         }
@@ -114,7 +114,7 @@ function autoSwipe() {
         setTimeout(()=>{
           exit();
         }, 5000);
-        console.log("任务完成，关闭");
+        // console.log("任务完成，关闭");
       }
       videoCount += 1;
     }
@@ -152,12 +152,12 @@ function directSwipe() {
 function delaySwipe() {
   let keyLike = textMatches(likeReg).boundsInside(0, 0, dw, dh ).findOnce();
   let delayTime = random(4000, 8000);
-  console.log(delayTime/1000 + "秒后滑动");
+  // console.log(delayTime/1000 + "秒后滑动");
   if (keyLike) {
     if (keyLike.visibleToUser()) {
       like()
       likeCount += 1;
-      console.log('感兴趣：' + keyLike.text());
+      // console.log('感兴趣：' + keyLike.text());
       sleep(delayTime);
       directSwipe();
     } else {
@@ -173,11 +173,11 @@ function delaySwipe() {
 // 双击点赞
 function like() {
   let delayTime = random(2000, 3500);
-  console.log( delayTime/1000 + "秒后点赞");
+  // console.log( delayTime/1000 + "秒后点赞");
   sleep(delayTime);
   click(dw * 0.5, dh * 0.55);
   sleep(50);
   click(dw * 0.5, dh * 0.55);
-  //console.log( '点赞：' + keyLike.text());
+  // console.log( '点赞：' + keyLike.text());
   //size == 1080 ? click(990, 750) : click(660, 440)
 }
