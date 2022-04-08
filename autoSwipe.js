@@ -1,4 +1,3 @@
-
 /* 
   author: 礼右六
   desc: 自动刷视频，仅在小米6测试，自动点赞和不感兴趣，关键字可自行修改
@@ -12,14 +11,14 @@ let dislikeCount = 0;
 let videoCount = 0;
 // let dw = device.width;  //获取设备宽度
 // let dh = device.height; //获取设备高度
-let dw = 1080;  //获取设备宽度
-let dh = 1920; //获取设备高度
-setScreenMetrics(1080, 1920); // 坐标按1080p屏幕分辨率调整
+let dw = 1080;  //预设设备宽度
+let dh = 1920; //预设设备高度
+setScreenMetrics(dw, dh); // 坐标按1080p屏幕分辨率调整
 
 // 点赞关键词
 let likeReg = /(.*塞尔达.*|.*portal.*|.*求生之路.*|.*卡卡罗特.*|.*泰拉瑞亚.*|.*vscode.*|.*flutter.*|.*macOS.*)/
 // 不感兴趣关键词
-let dislikeReg = /(.*男人.*|.*女人.*|.*手创作者.*|.*集结吧.*|.*光合作创作.*|.*光合作者.*|.*光合创作者.*|.*百家姓.*|.*摇摆舞.*|.*姓氏.*|.*假发.*|.*美妆.*|.*靓号.*|.*书单.*|.*正能量.*|.*书语.*|.*单身.*|.*内衣.*|.*爱我.*|.*娶我.*|.*身材.*|.*人美歌甜.*|.*时尚.*|.*传奇.*|.*零食.*|.*靓号.*|.*老铁.*|.*唯美.*|.*忧郁.*|.*古风.*)/
+let dislikeReg = /(.*小鸡恰恰舞.*|.*男人.*|.*女人.*|.*手创作者.*|.*集结吧.*|.*光合作创作.*|.*光合作者.*|.*光合创作者.*|.*百家姓.*|.*摇摆舞.*|.*姓氏.*|.*假发.*|.*美妆.*|.*靓号.*|.*书单.*|.*正能量.*|.*书语.*|.*单身.*|.*内衣.*|.*爱我.*|.*娶我.*|.*身材.*|.*人美歌甜.*|.*时尚.*|.*传奇.*|.*零食.*|.*靓号.*|.*老铁.*|.*唯美.*|.*忧郁.*|.*古风.*)/
 // 错误页面返回
 let errorBack = /(.*页面出错.*|.*填充拼图.*)/
 // 图片直播页面
@@ -27,11 +26,11 @@ let picPage = /(.*查看长图.*|.*查看原图.*|.*查看图集.*|.*进入直�
 
 // 悬浮按钮
 var floatBtn = floaty.window(
-  <vertical h="auto" w="auto" gravity="center" bg="#123456">
-      <text id="total" gravity="center" text="数据统计手动刷新"  textColor="#efefef"/>
-      <button id="ctl" text="开始" />
-      <button id="cs" text="刷新统计" />
-      <text id="tip" gravity="center" text="视频: 0, 点赞: 0, 不喜欢: 0" textColor="#efefef" />
+  <vertical h="auto" w="auto" gravity="center" bg="#efefef">
+      <text id="total" gravity="center" margin="10" text="手动打开app后再点开始"  textColor="#123456"/>
+      <button id="ctl" style="Widget.AppCompat.Button.Colored" text="开始" />
+      <button id="cs" style="Widget.AppCompat.Button.Colored" text="刷新统计" />
+      <text id="tip" gravity="center" margin="10" text="视频: 0, 点赞: 0, 不喜欢: 0" textColor="#123456" />
   </vertical>
 );
 floatBtn.setPosition(10, 100)   //设置位置（x，y）
