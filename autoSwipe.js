@@ -18,7 +18,7 @@ setScreenMetrics(dw, dh); // 坐标按1080p屏幕分辨率调整
 // 点赞关键词
 let likeReg = /(.*塞尔达.*|.*portal.*|.*求生之路.*|.*卡卡罗特.*|.*泰拉瑞亚.*|.*vscode.*|.*flutter.*|.*macOS.*)/
 // 不感兴趣关键词
-let dislikeReg = /(.*小鸡恰恰舞.*|.*男人.*|.*女人.*|.*手创作者.*|.*集结吧.*|.*光合作创作.*|.*光合作者.*|.*光合创作者.*|.*百家姓.*|.*摇摆舞.*|.*姓氏.*|.*假发.*|.*美妆.*|.*靓号.*|.*书单.*|.*正能量.*|.*书语.*|.*单身.*|.*内衣.*|.*爱我.*|.*娶我.*|.*身材.*|.*人美歌甜.*|.*时尚.*|.*传奇.*|.*零食.*|.*靓号.*|.*老铁.*|.*唯美.*|.*忧郁.*|.*古风.*)/
+let dislikeReg = /(.*摇摆舞.*|.*小鸡恰恰舞.*|.*男人.*|.*女人.*|.*手创作者.*|.*集结吧.*|.*光合作创作.*|.*光合作者.*|.*光合创作者.*|.*百家姓.*|.*摇摆舞.*|.*姓氏.*|.*假发.*|.*美妆.*|.*靓号.*|.*书单.*|.*正能量.*|.*书语.*|.*单身.*|.*内衣.*|.*爱我.*|.*娶我.*|.*身材.*|.*人美歌甜.*|.*时尚.*|.*传奇.*|.*零食.*|.*靓号.*|.*老铁.*|.*唯美.*|.*忧郁.*|.*古风.*)/
 // 错误页面返回
 let errorBack = /(.*页面出错.*|.*填充拼图.*)/
 // 图片直播页面
@@ -33,7 +33,7 @@ var floatBtn = floaty.window(
       <text id="tip" gravity="center" margin="10" text="视频: 0, 点赞: 0, 不喜欢: 0" textColor="#123456" />
   </vertical>
 );
-floatBtn.setPosition(10, 100)   //设置位置（x，y）
+floatBtn.setPosition(40, 100)   //设置位置（x，y）
 floatBtn.setAdjustEnabled(true)   //显示三个按钮
 floatBtn.exitOnClose()    //关闭悬浮窗时自动结束脚本运行
 
@@ -67,10 +67,7 @@ floatBtn.cs.click(function () {
 setInterval(()=>{
   let ctl = floatBtn.ctl.getText();
   if(ctl == "暂停" && isRun){
-    console.log("开始任务");
     autoSwipe();
-  } else if (ctl == "继续") {
-    console.log("暂停任务");
   }
 }, 500);
 
@@ -126,14 +123,15 @@ function autoSwipe() {
 
 // 长按并点击不感兴趣
 function dislike() {
-  press(dw * 0.5, dh * 0.5, 1500);
+  press(dw * 0.5, dh * 0.55, 1000);
   sleep(500);
   let dislike = textContains("不感兴趣").findOnce();
   if (dislike) {
-    size == 1080 ? dislike.parent().children()[0].click() : dislike.parent().click();
+    let dbounds = dislike.parent().bounds();
+    size == 1080 ? click(dbounds.centerX(), dbounds.centerY()) : dislike.parent().click();
     dislikeCount += 1;
   } else {
-    click(dw * 0.5, dh * 0.5);
+    click(dw * 0.5, dh * 0.55);
     delaySwipe();
   }
 }
