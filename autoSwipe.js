@@ -27,7 +27,7 @@ let dislikeReg = /(.*摇摆舞.*|.*痞帅.*|.*养生.*|.*小鸡恰恰舞.*|.*男
 // 错误页面返回
 let errorBack = /(.*页面出错.*|.*填充拼图.*)/
 // 图片直播页面
-let picPage = /(.*查看长图.*|.*查看原图.*|.*查看图集.*|.*进入直播间.*)/
+let picPage = /(.*查看长图.*|.*查看原图.*|.*点击查看.*|.*查看图集.*|.*进入直播间.*)/
 
 // 悬浮按钮
 // <text id="total" gravity="center" margin="10" text="👉 手动打开app后再点开始"  textColor="#123456"/>
@@ -40,7 +40,7 @@ var floatBtn = floaty.window(
       </horizontal>
       <horizontal gravity="center">
         <button id="ks" bg="#cdcdcd" textColor="#ffffff" text="快手" />
-        <button id="jsb" bg="#4CA6EF" textColor="#ffffff" text="极速版" />
+        <button id="jsb" bg="#09A9F5" textColor="#ffffff" text="极速版" />
         <button id="cus" bg="#cdcdcd" textColor="#ffffff" text="手动" />
       </horizontal>
       <horizontal gravity="center">
@@ -144,7 +144,7 @@ floatBtn.addDurEnd.click(function () {
   })
 })
 
-let colorOn = colors.parseColor("#4CA6EF");
+let colorOn = colors.parseColor("#09A9F5");
 let colorOff = colors.parseColor("#cdcdcd");
 
 floatBtn.ks.click(function () {
@@ -259,16 +259,13 @@ function autoSwipe() {
 
 // 长按并点击不感兴趣
 function dislike() {
-  press(dw * 0.5, dh * 0.55, 1000);
+  press(dw * 0.5, dh * 0.6, 1000);
   sleep(500);
   let dislike = textContains("不感兴趣").findOnce();
   if (dislike) {
     let dbounds = dislike.parent().bounds();
     size == 1080 ? click(dbounds.centerX(), dbounds.centerY()) : dislike.parent().click();
     dislikeCount += 1;
-  } else {
-    click(dw * 0.5, dh * 0.55);
-    delaySwipe();
   }
 }
 
