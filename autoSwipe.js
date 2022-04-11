@@ -231,14 +231,18 @@ function autoSwipe() {
         showToast("点击继续看视频"); //点击继续看视频
       }
       let pic = textMatches(picPage).boundsInside(0, 0, dw, dh ).findOnce();
-      let keyDislike = textMatches(dislikeReg).boundsInside(0, 0, dw, dh ).findOnce();
       if (pic) {
         directSwipe(); // 宁误刷，不停留
         showToast('滑走: '+pic.text());
-      } else if (keyDislike && isPref) { // 不感兴趣
-        if (keyDislike.visibleToUser()) { 
-          dislike();
-          showToast('第' + dislikeCount + '个不感兴趣 👎: '+keyDislike.text());
+      } else if (isPref) {
+        let keyDislike = textMatches(dislikeReg).boundsInside(0, 0, dw, dh ).findOnce();
+        if (keyDislike) { // 不感兴趣
+          if (keyDislike.visibleToUser()) { 
+            dislike();
+            showToast('第' + dislikeCount + '个不感兴趣 👎: '+keyDislike.text());
+          } else {
+            delaySwipe();
+          }
         } else {
           delaySwipe();
         }
@@ -283,7 +287,6 @@ function directSwipe() {
 
 // 延时滑动
 function delaySwipe() {
-  let keyLike = textMatches(likeReg).boundsInside(0, 0, dw, dh ).findOnce();
   let mid = durStart
   if (mid > durEnd) {
     durStart = durEnd
@@ -291,13 +294,19 @@ function delaySwipe() {
   }
   let delayTime = random(durStart*1000, durEnd*1000);
   showToast(delayTime/1000 + "秒后滑动");
-  if (keyLike && isPref) {
-    if (keyLike.visibleToUser()) {
-      like()
-      likeCount += 1;
-      showToast('第'+ likeCount +'个点赞 👍：' + keyLike.text());
-      sleep(delayTime);
-      directSwipe();
+  if (isPref) {
+    let keyLike = textMatches(likeReg).boundsInside(0, 0, dw, dh ).findOnce();
+    if (keyLike) {
+      if (keyLike.visibleToUser()) {
+        like()
+        likeCount += 1;
+        showToast('第'+ likeCount +'个点赞 👍：' + keyLike.text());
+        sleep(delayTime);
+        directSwipe();
+      } else {
+        sleep(delayTime);
+        directSwipe();
+      }
     } else {
       sleep(delayTime);
       directSwipe();
