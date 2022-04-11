@@ -6,11 +6,14 @@ auto.waitFor();//判断和等待开启无障碍
 let isRun = false;
 let isLog = false;
 let isPref = false;
+let appName = '快手极速版'
 let total = rawInput('准备刷多少个视频呢？', '5000');
 let size = device.width > 1080 || device.width == 1080 ? 1080 : 720;
 let likeCount = 0;
 let dislikeCount = 0;
 let videoCount = 0;
+let durStart = 4;
+let durEnd = 8;
 // let dw = device.width;  //获取设备宽度
 // let dh = device.height; //获取设备高度
 let dw = 1080;  //预设设备宽度
@@ -27,18 +30,33 @@ let errorBack = /(.*页面出错.*|.*填充拼图.*)/
 let picPage = /(.*查看长图.*|.*查看原图.*|.*查看图集.*|.*进入直播间.*)/
 
 // 悬浮按钮
+// <text id="total" gravity="center" margin="10" text="👉 手动打开app后再点开始"  textColor="#123456"/>
 var floatBtn = floaty.window(
-  <vertical h="auto" w="auto" gravity="center" bg="#efefef">
-      <text id="total" gravity="center" margin="10" text="👉 手动打开app后再点开始"  textColor="#123456"/>
-      <horizontal>
+  <vertical h="auto" w="auto" gravity="center" padding="10" bg="#efefef">
+      <horizontal gravity="center">
         <button id="pref" style="Widget.AppCompat.Button.Colored" text="开启偏好" />
         <button id="ctl" style="Widget.AppCompat.Button.Colored" text="开始" />
         <button id="log" style="Widget.AppCompat.Button.Colored" text="显示通知" />
       </horizontal>
-      <text id="tip" gravity="center" margin="10" text="悬浮窗内容只会在点击时刷新 ☝️" textColor="#123456" />
+      <horizontal gravity="center">
+        <button id="ks" bg="#cdcdcd" textColor="#ffffff" text="快手" />
+        <button id="jsb" bg="#4CA6EF" textColor="#ffffff" text="极速版" />
+        <button id="cus" bg="#cdcdcd" textColor="#ffffff" text="手动" />
+      </horizontal>
+      <horizontal gravity="center">
+        <text id="durTip" text="随机秒数: " textColor="#123456" />
+        <button id="subDurStart" w="40" h="40" style="Widget.AppCompat.Button.Colored" text="-" />
+        <text id="durStart" w="18"  gravity="center" text="4" textColor="#123456" />
+        <button id="addDurStart" w="40" h="40" style="Widget.AppCompat.Button.Colored" text="+" />
+        <text id="durTip"  text="至" textColor="#123456" />
+        <button id="subDurEnd" w="40" h="40" style="Widget.AppCompat.Button.Colored" text="-" />
+        <text id="durEnd" w="18"  gravity="center" text="8" textColor="#123456" />
+        <button id="addDurEnd" w="40" h="40"  style="Widget.AppCompat.Button.Colored" text="+" />
+      </horizontal>
   </vertical>
 );
-floatBtn.setPosition(40, 100)   //设置位置（x，y）
+// <text id="tip" gravity="center" margin="10" text="悬浮窗内容只会在点击时刷新 ☝️" textColor="#123456" />
+floatBtn.setPosition(60, 150)   //设置位置（x，y）
 floatBtn.setAdjustEnabled(true)   //显示三个按钮
 floatBtn.exitOnClose()    //关闭悬浮窗时自动结束脚本运行
 
@@ -48,16 +66,15 @@ floatBtn.ctl.click(function () {
   ui.run(function () {
     if (ctl == "开始" || ctl == "继续" ) { 
       floatBtn.ctl.setText("暂停");
-      floatBtn.total.setText("☕️ 总次数" + total + ", 已刷: " + videoCount );
-      isPref ? floatBtn.tip.setText("👍 点赞: " + likeCount + ", 不喜欢: " + dislikeCount ) : floatBtn.tip.setText("开启偏好可自动点赞或点不感兴趣");
+      //floatBtn.total.setText("☕️ 总次数" + total + ", 已刷: " + videoCount );
+      //isPref ? floatBtn.tip.setText("👍 点赞: " + likeCount + ", 不喜欢: " + dislikeCount ) : floatBtn.tip.setText("开启偏好可自动点赞或点不感兴趣");
       isRun = true;
-      toastLog("🦾 开始刷视频 剩余：" + (total - videoCount) );
     } else {
       floatBtn.ctl.setText("继续");
-      floatBtn.total.setText("☕️ 总次数" + total + ", 已刷: " + videoCount );
-      isPref ? floatBtn.tip.setText("👍 点赞: " + likeCount + ", 不喜欢: " + dislikeCount ) : floatBtn.tip.setText("悬浮窗内容只会在点击时刷新☝️");
+      //floatBtn.total.setText("☕️ 总次数" + total + ", 已刷: " + videoCount );
+      //isPref ? floatBtn.tip.setText("👍 点赞: " + likeCount + ", 不喜欢: " + dislikeCount ) : floatBtn.tip.setText("悬浮窗内容只会在点击时刷新☝️");
       isRun = false;
-      toastLog("暂停🤚");
+      toastLog("暂停 🤚");
     }
   });
 });
@@ -68,12 +85,12 @@ floatBtn.pref.click(function () {
     if (pref == "开启偏好") {
       floatBtn.pref.setText("关闭偏好");
       isPref = true;
-      floatBtn.tip.setText("👍 点赞: " + likeCount + ", 不喜欢: " + dislikeCount )
-      toastLog("将会自动点赞或点不感兴趣, 悬浮窗数据不会自动刷新");
+      //floatBtn.tip.setText("👍 点赞: " + likeCount + ", 不喜欢: " + dislikeCount )
+      toastLog("将会自动点赞 👍 或点不感兴趣 😒");
     } else {
       floatBtn.pref.setText("开启偏好");
       isPref = false;
-      floatBtn.tip.setText("开启偏好可自动点赞或点不感兴趣");
+      //floatBtn.tip.setText("开启偏好可自动点赞或点不感兴趣");
       toastLog("偏好已关闭");
     }
   });
@@ -85,21 +102,110 @@ floatBtn.log.click(function () {
     if (log == "显示通知") {
       floatBtn.log.setText("隐藏通知");
       isLog = true;
-      toastLog("刷每条视频都会显示详情");
+      toastLog("刷每条视频都会显示详情 📝");
     } else {
       floatBtn.log.setText("显示通知");
       isLog = false;
-      toastLog("已关闭通知");
+      toastLog("通知已关闭");
     }
   });
 });
 
-setInterval(()=>{
+floatBtn.subDurStart.click(function () {
+  ui.run(function () {
+    durStart -= 1;
+    durStart < 1 ? durStart = 0 : null;
+    floatBtn.durStart.setText(durStart.toString());
+  })
+})
+floatBtn.addDurStart.click(function () {
+  ui.run(function () {
+    durStart += 1;
+    durStart < durEnd ? null : durStart -= 1;
+    floatBtn.durStart.setText(durStart.toString());
+  })
+})
+
+floatBtn.subDurEnd.click(function () {
+  ui.run(function () {
+    durEnd -= 1;
+    durEnd > durStart ? null : durEnd += 1;
+    floatBtn.durEnd.setText(durEnd.toString());
+  })
+})
+floatBtn.addDurEnd.click(function () {
+  ui.run(function () {
+    durEnd += 1;
+    if (durEnd > 15) {
+      durEnd = 15;
+      toastLog("建议最大时长为15秒, 不爽改代码 😏");
+    }
+    floatBtn.durEnd.setText(durEnd.toString());
+  })
+})
+
+let colorOn = colors.parseColor("#4CA6EF");
+let colorOff = colors.parseColor("#cdcdcd");
+
+floatBtn.ks.click(function () {
+  ui.run(function () {
+    if (isRun) {
+      toastLog("若要切换 app 请先暂停 😒");
+    } else if (appName != '快手') {
+      appName = '快手';
+      floatBtn.ks.setBackgroundColor(colorOn); 
+      floatBtn.jsb.setBackgroundColor(colorOff); 
+      floatBtn.cus.setBackgroundColor(colorOff); 
+    }
+  })
+})
+floatBtn.jsb.click(function () {
+  ui.run(function () {
+    if (isRun) {
+      toastLog("若要切换 app 请先暂停 😒");
+    } else if (appName != '快手极速版') {
+      appName = '快手极速版';
+      floatBtn.ks.setBackgroundColor(colorOff); 
+      floatBtn.jsb.setBackgroundColor(colorOn); 
+      floatBtn.cus.setBackgroundColor(colorOff); 
+    }
+  })
+})
+floatBtn.cus.click(function () {
+  ui.run(function () {
+    if (isRun) {
+      toastLog("若要切换 app 请先暂停 😒");
+    } else if (appName != '手动') {
+      appName = '手动';
+      floatBtn.ks.setBackgroundColor(colorOff); 
+      floatBtn.jsb.setBackgroundColor(colorOff); 
+      floatBtn.cus.setBackgroundColor(colorOn); 
+    }
+  })
+})
+
+function startSwipe() {
   let ctl = floatBtn.ctl.getText();
   if(ctl == "暂停" && isRun){
-    autoSwipe();
+    if (appName == '手动') {
+      toastLog('请手动打开程序, 脚本将在 10 秒后自动开始');
+      sleep(10000);
+      toastLog('开始刷 🦾');
+      autoSwipe();
+    } else {
+      let packageName = getPackageName(appName);
+      toastLog('即将启动程序, 稍等⏱')
+      app.launchApp(appName);
+      waitForPackage(packageName);
+      toastLog('开始刷 🦾');
+      autoSwipe();
+    }
   }
-}, 500);
+}
+
+setInterval(()=>{
+  startSwipe()
+}, 100);
 
 // 自动刷视频
 function autoSwipe() {
@@ -132,7 +238,7 @@ function autoSwipe() {
       } else if (keyDislike && isPref) { // 不感兴趣
         if (keyDislike.visibleToUser()) { 
           dislike();
-          showToast('不感兴趣: '+keyDislike.text());
+          showToast('第' + dislikeCount + '个不感兴趣 👎: '+keyDislike.text());
         } else {
           delaySwipe();
         }
@@ -144,7 +250,7 @@ function autoSwipe() {
         setTimeout(()=>{
           exit();
         }, 5000);
-        showToast("任务完成，关闭");
+        toastLog("任务完成，关闭");
       }
       videoCount += 1;
     }
@@ -181,13 +287,18 @@ function directSwipe() {
 // 延时滑动
 function delaySwipe() {
   let keyLike = textMatches(likeReg).boundsInside(0, 0, dw, dh ).findOnce();
-  let delayTime = random(4000, 8000);
+  let mid = durStart
+  if (mid > durEnd) {
+    durStart = durEnd
+    durEnd = mid
+  }
+  let delayTime = random(durStart*1000, durEnd*1000);
   showToast(delayTime/1000 + "秒后滑动");
   if (keyLike && isPref) {
     if (keyLike.visibleToUser()) {
       like()
       likeCount += 1;
-      showToast('感兴趣：' + keyLike.text());
+      showToast('第'+ likeCount +'个点赞 👍：' + keyLike.text());
       sleep(delayTime);
       directSwipe();
     } else {
@@ -202,7 +313,7 @@ function delaySwipe() {
 
 // 双击点赞
 function like() {
-  let delayTime = random(2000, 3500);
+  let delayTime = random(1000, 3000);
   showToast( delayTime/1000 + "秒后点赞");
   sleep(delayTime);
   click(dw * 0.5, dh * 0.55);
