@@ -5,6 +5,7 @@
 auto.waitFor();//判断和等待开启无障碍
 let isRun = false;
 let isLog = false;
+let isPref = false;
 let total = rawInput('准备刷多少个视频呢？', '5000');
 let size = device.width > 1080 || device.width == 1080 ? 1080 : 720;
 let likeCount = 0;
@@ -19,7 +20,7 @@ setScreenMetrics(dw, dh); // 坐标按1080p屏幕分辨率调整
 // 点赞关键词
 let likeReg = /(.*塞尔达.*|.*portal.*|.*求生之路.*|.*卡卡罗特.*|.*泰拉瑞亚.*|.*vscode.*|.*flutter.*|.*macOS.*)/
 // 不感兴趣关键词
-let dislikeReg = /(.*摇摆舞.*|.*小鸡恰恰舞.*|.*男人.*|.*女人.*|.*手创作者.*|.*集结吧.*|.*光合作创作.*|.*光合作者.*|.*光合创作者.*|.*百家姓.*|.*摇摆舞.*|.*姓氏.*|.*假发.*|.*美妆.*|.*靓号.*|.*书单.*|.*正能量.*|.*书语.*|.*单身.*|.*内衣.*|.*爱我.*|.*娶我.*|.*身材.*|.*人美歌甜.*|.*时尚.*|.*传奇.*|.*零食.*|.*靓号.*|.*老铁.*|.*唯美.*|.*忧郁.*|.*古风.*)/
+let dislikeReg = /(.*摇摆舞.*|.*痞帅.*|.*养生.*|.*小鸡恰恰舞.*|.*男人.*|.*女人.*|.*手创作者.*|.*集结吧.*|.*光合作创作.*|.*光合作者.*|.*光合创作者.*|.*百家姓.*|.*摇摆舞.*|.*姓氏.*|.*假发.*|.*美妆.*|.*靓号.*|.*书单.*|.*正能量.*|.*书语.*|.*单身.*|.*内衣.*|.*爱我.*|.*娶我.*|.*身材.*|.*人美歌甜.*|.*时尚.*|.*传奇.*|.*零食.*|.*靓号.*|.*老铁.*|.*唯美.*|.*忧郁.*|.*古风.*)/
 // 错误页面返回
 let errorBack = /(.*页面出错.*|.*填充拼图.*)/
 // 图片直播页面
@@ -28,13 +29,13 @@ let picPage = /(.*查看长图.*|.*查看原图.*|.*查看图集.*|.*进入直�
 // 悬浮按钮
 var floatBtn = floaty.window(
   <vertical h="auto" w="auto" gravity="center" bg="#efefef">
-      <text id="total" gravity="center" margin="10" text="手动打开app后再点开始"  textColor="#123456"/>
+      <text id="total" gravity="center" margin="10" text="👉 手动打开app后再点开始"  textColor="#123456"/>
       <horizontal>
-        <button id="cs" style="Widget.AppCompat.Button.Colored" text="手动刷新" />
+        <button id="pref" style="Widget.AppCompat.Button.Colored" text="开启偏好" />
         <button id="ctl" style="Widget.AppCompat.Button.Colored" text="开始" />
         <button id="log" style="Widget.AppCompat.Button.Colored" text="显示通知" />
       </horizontal>
-      <text id="tip" gravity="center" margin="10" text="视频: 0, 点赞: 0, 不喜欢: 0" textColor="#123456" />
+      <text id="tip" gravity="center" margin="10" text="悬浮窗内容只会在点击时刷新 ☝️" textColor="#123456" />
   </vertical>
 );
 floatBtn.setPosition(40, 100)   //设置位置（x，y）
@@ -47,22 +48,34 @@ floatBtn.ctl.click(function () {
   ui.run(function () {
     if (ctl == "开始" || ctl == "继续" ) { 
       floatBtn.ctl.setText("暂停");
-      floatBtn.total.setText("总次数" + total  );
-      floatBtn.tip.setText("视频: " + videoCount + ", 点赞: " + likeCount + ", 不喜欢: " + dislikeCount );
+      floatBtn.total.setText("☕️ 总次数" + total + ", 已刷: " + videoCount );
+      isPref ? floatBtn.tip.setText("👍 点赞: " + likeCount + ", 不喜欢: " + dislikeCount ) : floatBtn.tip.setText("开启偏好可自动点赞或点不感兴趣");
       isRun = true;
+      toastLog("🦾 开始刷视频 剩余：" + (total - videoCount) );
     } else {
       floatBtn.ctl.setText("继续");
-      floatBtn.total.setText("总次数" + (total - videoCount) );
-      floatBtn.tip.setText("视频: " + videoCount + ", 点赞: " + likeCount + ", 不喜欢: " + dislikeCount );
+      floatBtn.total.setText("☕️ 总次数" + total + ", 已刷: " + videoCount );
+      isPref ? floatBtn.tip.setText("👍 点赞: " + likeCount + ", 不喜欢: " + dislikeCount ) : floatBtn.tip.setText("悬浮窗内容只会在点击时刷新☝️");
       isRun = false;
-      total = total - videoCount;
+      toastLog("暂停🤚");
     }
   });
 });
 
-floatBtn.cs.click(function () {
+floatBtn.pref.click(function () {
+  let pref = floatBtn.pref.getText();
   ui.run(function () {
-    floatBtn.tip.setText("视频: " + videoCount + ", 点赞: " + likeCount + ", 不喜欢: " + dislikeCount );
+    if (pref == "开启偏好") {
+      floatBtn.pref.setText("关闭偏好");
+      isPref = true;
+      floatBtn.tip.setText("👍 点赞: " + likeCount + ", 不喜欢: " + dislikeCount )
+      toastLog("将会自动点赞或点不感兴趣, 悬浮窗数据不会自动刷新");
+    } else {
+      floatBtn.pref.setText("开启偏好");
+      isPref = false;
+      floatBtn.tip.setText("开启偏好可自动点赞或点不感兴趣");
+      toastLog("偏好已关闭");
+    }
   });
 });
 
@@ -72,9 +85,11 @@ floatBtn.log.click(function () {
     if (log == "显示通知") {
       floatBtn.log.setText("隐藏通知");
       isLog = true;
+      toastLog("刷每条视频都会显示详情");
     } else {
       floatBtn.log.setText("显示通知");
       isLog = false;
+      toastLog("已关闭通知");
     }
   });
 });
@@ -88,11 +103,11 @@ setInterval(()=>{
 
 // 自动刷视频
 function autoSwipe() {
-  for (var i = 1; i < total; i++) {
+  for (var i = videoCount; i < total; i++) {
     if (!isRun) {
       break;
     } else if(isRun) {
-      showToast("开始第" + i + "次，剩余" + (total - i) + "次");
+      showToast("开始第" + (i+1) + "次，剩余" + (total - (i+1)) + "次");
       let back = textMatches(errorBack).boundsInside(0, 0, dw, dh ).findOnce();
       if (back) {
         if (back.visibleToUser()) {
@@ -114,7 +129,7 @@ function autoSwipe() {
       if (pic) {
         directSwipe(); // 宁误刷，不停留
         showToast('滑走: '+pic.text());
-      } else if (keyDislike) { // 不感兴趣
+      } else if (keyDislike && isPref) { // 不感兴趣
         if (keyDislike.visibleToUser()) { 
           dislike();
           showToast('不感兴趣: '+keyDislike.text());
@@ -168,7 +183,7 @@ function delaySwipe() {
   let keyLike = textMatches(likeReg).boundsInside(0, 0, dw, dh ).findOnce();
   let delayTime = random(4000, 8000);
   showToast(delayTime/1000 + "秒后滑动");
-  if (keyLike) {
+  if (keyLike && isPref) {
     if (keyLike.visibleToUser()) {
       like()
       likeCount += 1;
