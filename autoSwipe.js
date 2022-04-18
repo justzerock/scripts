@@ -1,5 +1,5 @@
 /* 
-  author: 礼右六
+  author: @justzerock
   desc: 自动刷视频，仅在小米6测试，自动点赞和不感兴趣，关键字可自行修改
   createTime: 2022-04-08
   updateTime: 2022-04-13
