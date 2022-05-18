@@ -14,16 +14,21 @@ let hour = new Date().getHours()
 let account = '' // **31\foxmail\gmail
 let appName = "支付宝"
 let packageName = app.getPackageName(appName)
+let acHour1 = [7, 8, 11, 12, 15, 16, 19, 22]
+let acHour2 = [1, 9, 13, 17, 20]
+let acHour3 = [2, 10, 14, 18, 21]
+let dw = device.width
+let dh = device.height
 
-if (hour >= 0 && hour < 6) {
+if ((hour >= 3 && hour < 6) || hour == 23) {
   killApp()
-} else if ((hour >= 6 && hour < 12) || (hour >= 18 && hour < 24)) {
+} else if (acHour1.includes(hour)) {
   account = '**31'
   switchAccount()
-} else if (hour >= 12 && hour < 15) {
+} else if (acHour2.includes(hour)) {
   account = 'foxmail'
   switchAccount()
-} else if (hour >= 15 && hour < 18) {
+} else if (acHour3.includes(hour)) {
   account = 'gmail'
   switchAccount()
 }
@@ -47,16 +52,19 @@ function killApp() {
 function switchAccount() {
   app.launchApp(appName)
   waitForPackage(packageName)
-  textContains('我的').waitFor()
-  clickCenterContains('我的')
+  text('蚂蚁森林').waitFor()
+  
+  text('我的').boundsInside(0, 1080, dw, dh ).waitFor()
+  toastLog(text('蚂蚁森林').findOne())
+  //clickCenter('我的')
   textContains('设置').waitFor()
-  clickCenterContains('设置')
+  clickCenter('设置')
   textContains('账号与安全').waitFor()
   swipe(device.width * 0.5, device.height * 0.8, device.width * 0.5, device.height * 0.2, 50)
   sleep(1000)
-  clickCenterContains('换账号登录')
+  clickCenter('换账号登录')
   textContains('***').waitFor()
-  clickCenterContains(account)
+  clickCenter(account)
   sleep(1000)
   if (textContains('我的').exists()) {
     home()
@@ -69,7 +77,7 @@ function switchAccount() {
   }
 }
 
-function clickCenterContains(item) {
+function clickCenter(item) {
   let bounds = textContains(item).findOne().parent().bounds()
   click(bounds.centerX(), bounds.centerY())
 }
