@@ -1624,7 +1624,7 @@ function getPushWeek(strRemark) {
   if (strRemark) {
       var Tempindex = strRemark.indexOf("@@");
       if (Tempindex != -1) {
-          var TempRemarkList = strRemark.split(/@@|--|##/);
+          var TempRemarkList = strRemark.split(/@@|##/);
           for (let j = 1; j < TempRemarkList.length; j++) {
               if (TempRemarkList[j]) {
                   if (TempRemarkList[j].length > 4) {
@@ -1648,7 +1648,7 @@ function getPushDay(strRemark) {
   if (strRemark) {
       var Tempindex = strRemark.indexOf("@@");
       if (Tempindex != -1) {
-          var TempRemarkList = strRemark.split(/@@|--|##/);
+          var TempRemarkList = strRemark.split(/@@|##/);
           for (let j = 1; j < TempRemarkList.length; j++) {
               if (TempRemarkList[j]) {
                   if (TempRemarkList[j].length > 3) {
@@ -1672,7 +1672,7 @@ function getExpRedEnv(strRemark) {
   if (strRemark) {
       var Tempindex = strRemark.indexOf("@@");
       if (Tempindex != -1) {
-          var TempRemarkList = strRemark.split(/@@|--|##/);
+          var TempRemarkList = strRemark.split(/@@|##/);
           for (let j = 1; j < TempRemarkList.length; j++) {
               if (TempRemarkList[j]) {
                   if (TempRemarkList[j].length > 3) {
@@ -1733,7 +1733,7 @@ function getRemark(strRemark) {
     if (strRemark) {
         var Tempindex = strRemark.indexOf("@@");
         if (Tempindex != -1) {
-            var TempRemarkList = strRemark.split("@@");
+            var TempRemarkList = strRemark.split(/@@|##/);
             return TempRemarkList[0].trim();
         } else {
             //这是为了处理ninjia的remark格式
