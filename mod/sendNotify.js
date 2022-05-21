@@ -1800,7 +1800,10 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                           let expNum = desp.match(/\总过期\d+\.\d+/g)[0].match(/\d+\.\d+/g)[0]
                           let setNum = ERE.slice(3) || EXP_NUM
                           console.log('总过期:' + expNum + '，预设值:' + setNum)
-                          if ( expNum > setNum || expNum == setNum ) WP_UIDS_ONE = Uid;
+                          if ( expNum > setNum || expNum == setNum ) {
+                            WP_UIDS_ONE = Uid;
+                            UserRemark = UserRemark + ' 🧧红包提醒'
+                          }
 
                             $.nickName = "";
                             $.FoundPin = "";
