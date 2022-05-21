@@ -114,7 +114,7 @@ if (WP_APP_TOKEN_ONE) {
 
 let WP_UIDS_ONE = "";
 
-let EXP_NUM = 9
+let EXP_NUM = 5
 if (process.env.EXP_NUM) {
     EXP_NUM = process.env.EXP_NUM
 }
