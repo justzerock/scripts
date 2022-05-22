@@ -1842,7 +1842,7 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                             day == today || day == 0 ? WP_UIDS_ONE = Uid : null
                           }
 
-                          let strsummaryOri = strsummary;
+                          let UserRemarkOri = UserRemark;
                           let expPocket = desp.match(/\总过期\d+\.\d+/g)[0].match(/\d+\.\d+/g)[0]
                           let setPocket = EXP.slice(3) || EXP_NUM
                           let expNotify = false
@@ -1850,7 +1850,7 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                           if ( expPocket > setPocket || expPocket == setPocket ) {
                             expNotify = true
                             WP_UIDS_ONE = Uid;
-                            UserRemark = strsummaryOri + ' 🧧特别提醒'
+                            UserRemark = UserRemarkOri + ' 🧧特别提醒'
                             strsummary = '🧧 你有' + expPocket + '元红包即将过期\n 🤝 请及时使用 \n 👉 点击查看更多详情'
                           }
 
@@ -1859,7 +1859,7 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                           console.log('总过期:' + expBean + '，预设值:' + setBean)
                           if ( expBean > setBean || expBean == setBean ) {
                             WP_UIDS_ONE = Uid;
-                            UserRemark = strsummaryOri + ' 🧧特别提醒'
+                            UserRemark = UserRemarkOri + ' 🧧特别提醒'
                             strsummary = (expNotify ? '🧧 你有' + expPocket + '元红包即将过期\n🌝 ' : '🌝 你有') + expBean + '个京豆即将过期\n 🤝 请及时使用 \n 👉 点击查看更多详情'
                           }
 
