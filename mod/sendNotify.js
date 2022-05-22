@@ -119,6 +119,11 @@ if (process.env.EXP_NUM) {
     EXP_NUM = process.env.EXP_NUM
 }
 
+let EXB_NUM = 500
+if (process.env.EXB_NUM) {
+    EXB_NUM = process.env.EXB_NUM
+}
+
 // =======================================gotify通知设置区域==============================================
 //gotify_url 填写gotify地址,如https://push.example.de:8080
 //gotify_token 填写gotify的消息应用token
@@ -1667,8 +1672,8 @@ function getPushDay(strRemark) {
   return pushDay;
 }
 
-function getExpRedEnv(strRemark) {
-  var ERE = "";
+function getExpPocket(strRemark) {
+  var EXP = "";
   if (strRemark) {
       var Tempindex = strRemark.indexOf("@@");
       if (Tempindex != -1) {
@@ -1676,19 +1681,56 @@ function getExpRedEnv(strRemark) {
           for (let j = 1; j < TempRemarkList.length; j++) {
               if (TempRemarkList[j]) {
                   if (TempRemarkList[j].length > 3) {
-                      if (TempRemarkList[j].substring(0, 3).toLowerCase() == "ere") {
-                          ERE = TempRemarkList[j];
+                      if (TempRemarkList[j].substring(0, 3).toLowerCase() == "exp") {
+                          EXP = TempRemarkList[j];
                           break;
                       }
                   }
               }
           }
-          if (!ERE) {
-              console.log("默认推送10元及以上将过期红包🧧");
+          if (!EXP) {
+              console.log("默认推送5元及以上将过期红包🧧");
           }
       }
   }
-  return ERE;
+  return EXP;
+}
+
+function getExpBean(strRemark) {
+    var EXB = "";
+    if (strRemark) {
+        var Tempindex = strRemark.indexOf("@@");
+        if (Tempindex != -1) {
+            var TempRemarkList = strRemark.split(/@@|##/);
+            for (let j = 1; j < TempRemarkList.length; j++) {
+                if (TempRemarkList[j]) {
+                    if (TempRemarkList[j].length > 3) {
+                        if (TempRemarkList[j].substring(0, 3).toLowerCase() == "exb") {
+                            EXB = TempRemarkList[j];
+                            break;
+                        }
+                    }
+                }
+            }
+            if (!EXB) {
+                console.log("默认推送500及以上将过期京豆🌝");
+            }
+        }
+    }
+    return EXB;
+  }
+
+function countExpBean(desp) {
+    var expBean = 0;
+    if (desp) {
+        if (desp.indexOf("临期京豆") != -1) {
+            let strExpBean = desp.match(/\过期\d+\豆/g).toString().match(/\d+/g)
+            for (let i = 0; i < strExpBean.length; i++) {
+                expBean += parseInt(strExpBean[i]);
+            }
+        }
+    }
+    return expBean;
 }
 
 function getQLinfo(strCK, intcreated, strTimestamp, strRemark) {
@@ -1752,7 +1794,9 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
         var Uid = "";
         var pushWeek = "";
         var pushDay = "";
-        var ERE = "";
+        var EXP = "";
+        var EXB = "";
+        var expBean = 0;
         var UserRemark = "";
         var strTempdesp = [];
         var strAllNotify = "";
@@ -1772,7 +1816,8 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                 Uid = getuuid(tempEnv.remarks, PtPin);
                 pushWeek = getPushWeek(tempEnv.remarks);
                 pushDay = getPushDay(tempEnv.remarks);
-                ERE = getExpRedEnv(tempEnv.remarks);
+                EXP = getExpPocket(tempEnv.remarks);
+                EXB = getExpBean(tempEnv.remarks);
                 UserRemark = getRemark(tempEnv.remarks);
 
                 if (Uid) {
@@ -1797,12 +1842,24 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                             day == today || day == 0 ? WP_UIDS_ONE = Uid : null
                           }
 
-                          let expNum = desp.match(/\总过期\d+\.\d+/g)[0].match(/\d+\.\d+/g)[0]
-                          let setNum = ERE.slice(3) || EXP_NUM
-                          console.log('总过期:' + expNum + '，预设值:' + setNum)
-                          if ( expNum > setNum || expNum == setNum ) {
+                          let expPocket = desp.match(/\总过期\d+\.\d+/g)[0].match(/\d+\.\d+/g)[0]
+                          let setPocket = EXP.slice(3) || EXP_NUM
+                          let expNotify = false
+                          console.log('总过期:' + expPocket + '，预设值:' + setPocket)
+                          if ( expPocket > setPocket || expPocket == setPocket ) {
+                            expNotify = true
                             WP_UIDS_ONE = Uid;
                             UserRemark = UserRemark + ' 🧧红包提醒'
+                            strsummary = '🧧 你有' + expPocket + '元红包即将过期\n 请及时使用 \n 点击查看更多详情'
+                          }
+
+                          expBean = countExpBean(desp);
+                          let setBean = EXB.slice(3) || EXB_NUM
+                          console.log('总过期:' + expBean + '，预设值:' + setBean)
+                          if ( expBean > setBean || expBean == setBean ) {
+                            WP_UIDS_ONE = Uid;
+                            UserRemark = UserRemark + (expNotify ? ' 🧧红包与京豆提醒' : ' 🌝京豆提醒')
+                            strsummary = (expNotify ? '🧧 你有' + expPocket + '元红包即将过期\n🌝 ' : '🌝 你有') + expBean + '个京豆即将过期\n 请及时使用 \n 点击查看更多详情'
                           }
 
                             $.nickName = "";
