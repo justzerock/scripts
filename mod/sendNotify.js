@@ -1847,11 +1847,12 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                           let setPocket = EXP.slice(3) || EXP_NUM
                           let expNotify = false
                           console.log('总过期:' + expPocket + '，预设值:' + setPocket)
+                          UserRemark = UserRemarkOri + '#日常通知 🌈'
                           if ( expPocket > setPocket || expPocket == setPocket ) {
                             expNotify = true
                             WP_UIDS_ONE = Uid;
-                            UserRemark = UserRemarkOri + ' 🧧特别提醒'
-                            strsummary = '🧧 你有' + expPocket + '元红包即将过期\n 🤝 请及时使用 \n 👉 点击查看更多详情'
+                            UserRemark = UserRemarkOri + '#红包提醒 🧧'
+                            strsummary = '🧧 你有' + expPocket + '元红包即将过期 🧧\n 🕛 请及时使用 \n 👉 点击查看更多详情'
                           }
 
                           expBean = countExpBean(desp);
@@ -1859,8 +1860,8 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                           console.log('总过期:' + expBean + '，预设值:' + setBean)
                           if ( expBean > setBean || expBean == setBean ) {
                             WP_UIDS_ONE = Uid;
-                            UserRemark = UserRemarkOri + ' 🧧特别提醒'
-                            strsummary = (expNotify ? '🧧 你有' + expPocket + '元红包即将过期\n🌝 ' : '🌝 你有') + expBean + '个京豆即将过期\n 🤝 请及时使用 \n 👉 点击查看更多详情'
+                            UserRemark = UserRemarkOri + ( expNotify ? '#红包&京豆提醒 🧧' : '#京豆提醒 🥞')
+                            strsummary = (expNotify ? '🧧 你有' + expPocket + '元红包即将过期 🧧\n🥞 ' : '🥞 你有') + expBean + '个京豆即将过期 🥞\n 🕛 请及时使用 \n 👉 点击查看更多详情'
                           }
 
                             $.nickName = "";
@@ -1920,7 +1921,11 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                         }
                     }
                     if (UserRemark) {
-                        text = text + " (" + UserRemark + ")";
+                        if (text == "京东资产变动") {
+                            text = UserRemark
+                        } else {
+                            text = text + " (" + UserRemark + ")";
+                        }
                     }
                     console.log("处理完成，开始发送通知...");
                     desp = buildLastDesp(desp, author);
