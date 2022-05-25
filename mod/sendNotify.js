@@ -1896,7 +1896,7 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                           if ( expBean > setBean || expBean == setBean ) {
                             WP_UIDS_ONE = Uid;
                             UserRemark = '🧧 ' + UserRemarkOri + ( expNotify ? '#红包&京豆提醒 🌈' : '#京豆提醒 🌈')
-                            strsummary = (expNotify ? '🧧 你有' + totalPocket + '元红包\n' + (expPocket > 0 ? '🧧 其中' + expPocket + '元将过期\n🥔 ' : '🥔 ') : '🥔 你有') + expBean + '个京豆即将过期\n🕛 请及时使用 \n\n👉 点击查看更多详情'
+                            strsummary = (expNotify ? '🧧 你有' + totalPocket + '元红包\n' + (expPocket > 0 ? '🧧 其中' + expPocket + '元将过期\n🧧 ' : '🧧 ') : '🧧 你有') + expBean + '个京豆将过期\n🕛 请及时使用 \n\n👉 点击查看更多详情'
                           }
 
                             $.nickName = "";
