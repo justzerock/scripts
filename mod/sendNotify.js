@@ -119,6 +119,11 @@ if (process.env.EXP_NUM) {
     EXP_NUM = process.env.EXP_NUM
 }
 
+let TTP_NUM = 10
+if (process.env.TTP_NUM) {
+    EXP_NUM = process.env.TTP_NUM
+}
+
 let EXB_NUM = 500
 if (process.env.EXB_NUM) {
     EXB_NUM = process.env.EXB_NUM
@@ -1696,6 +1701,32 @@ function getExpPocket(strRemark) {
   return EXP;
 }
 
+function getTotalPocket(strRemark) {
+  var TTP = "";
+  if (strRemark) {
+      var Tempindex = strRemark.indexOf("@@");
+      if (Tempindex != -1) {
+          var TempRemarkList = strRemark.split(/@@|##/);
+          for (let j = 1; j < TempRemarkList.length; j++) {
+              if (TempRemarkList[j]) {
+                  if (TempRemarkList[j].length > 3) {
+                      if (TempRemarkList[j].substring(0, 3).toLowerCase() == "ttp") {
+                          TTP = TempRemarkList[j];
+                          break;
+                      }
+                  }
+              }
+          }
+          if (!TTP) {
+              console.log("默认推送10以上红包🧧");
+          }
+      }
+  }
+  return TTP;
+}
+
+
+
 function getExpBean(strRemark) {
     var EXB = "";
     if (strRemark) {
@@ -1796,6 +1827,7 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
         var pushDay = "";
         var EXP = "";
         var EXB = "";
+        var TTP = "";
         var expBean = 0;
         var UserRemark = "";
         var strTempdesp = [];
@@ -1817,6 +1849,7 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                 pushWeek = getPushWeek(tempEnv.remarks);
                 pushDay = getPushDay(tempEnv.remarks);
                 EXP = getExpPocket(tempEnv.remarks);
+                TTP = getTotalPocket(tempEnv.remarks);
                 EXB = getExpBean(tempEnv.remarks);
                 UserRemark = getRemark(tempEnv.remarks);
 
@@ -1832,36 +1865,38 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                             let day = pushWeek.slice(4)
                             let today = new Date().getDay()
                             day == 0 || day == 7 ? day = 0 : null
-                            console.log('预设星期' + day)
+                            //console.log('预设星期' + day)
                             day == today ? WP_UIDS_ONE = Uid : null
                           }
                           if (pushDay.toLowerCase().indexOf('day') != -1) {
                             let day = pushDay.slice(3)
                             let today = new Date().getDate()
-                            console.log('预设' + day + '日')
+                            //console.log('预设' + day + '日')
                             day == today || day == 0 ? WP_UIDS_ONE = Uid : null
                           }
 
                           let UserRemarkOri = UserRemark;
+                          let totalPocket = desp.match(/\红包总额】\d+\.\d+/g)[0].match(/\d+\.\d+/g)[0]
                           let expPocket = desp.match(/\总过期\d+\.\d+/g)[0].match(/\d+\.\d+/g)[0]
+                          let setTotalPocket = TTP.slice(3) || TTP_NUM
                           let setPocket = EXP.slice(3) || EXP_NUM
                           let expNotify = false
-                          console.log('总过期:' + expPocket + '，预设值:' + setPocket)
+                          //console.log('总过期:' + expPocket + '，预设值:' + setPocket)
                           UserRemark = UserRemarkOri + '#日常通知 🌈'
-                          if ( expPocket > setPocket || expPocket == setPocket ) {
+                          if ( !(expPocket < setPocket) || !(totalPocket < setTotalPocket) ) {
                             expNotify = true
                             WP_UIDS_ONE = Uid;
-                            UserRemark = UserRemarkOri + '#红包提醒 🧧'
-                            strsummary = '🧧 你有' + expPocket + '元红包即将过期 🧧\n🕛 请及时使用 \n\n👉 点击查看更多详情'
+                            UserRemark = '🧧 ' + UserRemarkOri + '#红包提醒 🌈'
+                            strsummary = '🧧 你有' + totalPocket + '元红包\n' + (expPocket > 0 ? '🧧 其中' + expPocket + '元将过期\n' : '') + '🕛 请及时使用 \n\n👉 点击查看更多详情'
                           }
 
                           expBean = countExpBean(desp);
                           let setBean = EXB.slice(3) || EXB_NUM
-                          console.log('总过期:' + expBean + '，预设值:' + setBean)
+                          //console.log('总过期:' + expBean + '，预设值:' + setBean)
                           if ( expBean > setBean || expBean == setBean ) {
                             WP_UIDS_ONE = Uid;
-                            UserRemark = UserRemarkOri + ( expNotify ? '#红包&京豆提醒 🧧' : '#京豆提醒 🥔')
-                            strsummary = (expNotify ? '🧧 你有' + expPocket + '元红包即将过期 🧧\n🥔 ' : '🥔 你有') + expBean + '个京豆即将过期 🥔\n🕛 请及时使用 \n\n👉 点击查看更多详情'
+                            UserRemark = '🧧 ' + UserRemarkOri + ( expNotify ? '#红包&京豆提醒 🌈' : '#京豆提醒 🌈')
+                            strsummary = (expNotify ? '🧧 你有' + totalPocket + '元红包\n' + (expPocket > 0 ? '🧧 其中' + expPocket + '元将过期\n🥔 ' : '🥔 ') : '🥔 你有') + expBean + '个京豆即将过期\n🕛 请及时使用 \n\n👉 点击查看更多详情'
                           }
 
                             $.nickName = "";
