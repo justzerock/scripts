@@ -121,7 +121,7 @@ if (process.env.EXP_NUM) {
 
 let TTP_NUM = 10
 if (process.env.TTP_NUM) {
-    EXP_NUM = process.env.TTP_NUM
+    TTP_NUM = process.env.TTP_NUM
 }
 
 let EXB_NUM = 500
