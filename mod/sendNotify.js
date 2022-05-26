@@ -1883,7 +1883,7 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                           let setTotalPocket = TTP.slice(3) || TTP_NUM
                           let setPocket = EXP.slice(3) || EXP_NUM
                           let expNotify = false
-                          console.log('🧧红包总额:' + totalPocket + '，预设值:' + setPocket)
+                          console.log('🧧红包总额:' + totalPocket + '，预设值:' + setTotalPocket)
                           console.log('🧧过期:' + expPocket + '，预设值:' + setPocket)
                           UserRemark = UserRemarkOri + '#日常通知 🌈'
                           if ( !(expPocket < setPocket) || !(totalPocket < setTotalPocket) ) {
