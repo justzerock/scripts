@@ -1878,10 +1878,10 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                           }
 
                           let UserRemarkOri = UserRemark;
-                          let totalPocket = desp.match(/\红包总额】\d+\.\d+/g)[0].match(/\d+\.\d+/g)[0]
-                          let expPocket = desp.match(/\总过期\d+\.\d+/g)[0].match(/\d+\.\d+/g)[0]
-                          let setTotalPocket = TTP.slice(3) || TTP_NUM
-                          let setPocket = EXP.slice(3) || EXP_NUM
+                          let totalPocket = desp.match(/\红包总额】\d+\.\d+/g)[0].match(/\d+\.\d+/g)[0] * 1
+                          let expPocket = desp.match(/\总过期\d+\.\d+/g)[0].match(/\d+\.\d+/g)[0] * 1
+                          let setTotalPocket = TTP.slice(3) * 1 || TTP_NUM * 1
+                          let setPocket = EXP.slice(3) * 1 || EXP_NUM * 1
                           let expNotify = false
                           console.log('🧧红包总额:' + totalPocket + '，预设值:' + setTotalPocket)
                           console.log('🧧过期:' + expPocket + '，预设值:' + setPocket)
@@ -1896,7 +1896,7 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                           expBean = countExpBean(desp);
                           let setBean = EXB.slice(3) || EXB_NUM
                           console.log('🧧京豆总过期:' + expBean + '，预设值:' + setBean)
-                          if ( expBean > setBean || expBean == setBean ) {
+                          if ( !(expBean < setBean) ) {
                             WP_UIDS_ONE = Uid;
                             UserRemark = '🧧 ' + UserRemarkOri + ( expNotify ? '#红包&京豆提醒 🌈' : '#京豆提醒 🌈')
                             strsummary = (expNotify ? '🧧 你有' + totalPocket + '元红包\n' + (expPocket > 0 ? '🧧 其中' + expPocket + '元将过期\n🧧 ' : '🧧 ') : '🧧 你有') + expBean + '个京豆将过期\n🕛 请及时使用 \n\n👉 点击查看更多详情'
