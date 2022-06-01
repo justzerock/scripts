@@ -36,7 +36,7 @@ $.logic = async function () {
         $.log('玩不了哦')
         return
     }
-    if (info.farmUserPro.treeState > 0) {
+    if (info.farmUserPro.treeState > 0 && info.farmUserPro.treeState < 3) {
         let state = info.farmUserPro.treeState
         $.log(state === 1 ? '种植中……' : '还没领红包')
         return
