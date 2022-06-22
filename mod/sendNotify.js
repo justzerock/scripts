@@ -1876,10 +1876,6 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                             //console.log('预设' + day + '日')
                             day == today || day == 0 ? WP_UIDS_ONE = Uid : null
                           }
-
-                          /* 
-                            /^.+(兑换|领取)/gm
-                          */
                           let UserRemarkOri = UserRemark;
                           let totalPocket = desp.match(/\红包总额】\d+\.\d+/g)[0].match(/\d+\.\d+/g)[0] * 1
                           let expPocket = desp.match(/\总过期\d+\.\d+/g)[0].match(/\d+\.\d+/g)[0] * 1
@@ -1901,11 +1897,11 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                           let ttBean = desp.match(/\d+豆.+元./g)[0]
                           console.log('🧧京豆总过期:' + expBean + '，预设值:' + setBean)
                           strExb = !(expBean < setBean) ? '🧧 「京豆」七天内将过期' + expBean + '京豆(≈'+ expBean/100 +'元), 共' + ttBean + '\n' : ''
-                          
+                          // 领取通知
                           let strGet = desp.match(/^.+(兑换|领取)/gm).toString()
-                          let strFruit = strGet.indexOf('东东农场') != -1 ? '👨‍🌾 东东农场可领取\n' : ''
-                          let strPet = strGet.indexOf('东东萌宠') != -1 ? '🐶 东东萌宠可领取\n' : ''
-                          let strFactory = strGet.indexOf('京喜工厂') != -1 ? '🏭 京喜工厂可领取\n' : ''
+                          let strFruit = strGet.indexOf('东东农场') != -1 ? '🧧 「东东农场」可领取\n' : ''
+                          let strPet = strGet.indexOf('东东萌宠') != -1 ? '🧧 「东东萌宠」可领取\n' : ''
+                          let strFactory = strGet.indexOf('京喜工厂') != -1 ? '🎁 「京喜工厂」可领取\n' : ''
 
                           if (strExp || strTtp || strExb || strFruit || strPet || strFactory) {
                             WP_UIDS_ONE = Uid;
