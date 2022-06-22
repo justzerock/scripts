@@ -1858,7 +1858,7 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
         if (Uid) {
           console.log("查询到Uid ：" + Uid);
           WP_UIDS_ONE = Uid;
-          console.log("正在发送一对一通知,请稍后...");
+          console.log("准备一对一通知,请稍后...");
 
           if (text == "京东资产变动") {
             try {
@@ -1981,7 +1981,7 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
               text = text + " (" + UserRemark + ")";
             }
           }
-          console.log("处理完成，开始发送通知...");
+          WP_UIDS_ONE ? console.log("处理完成，开始发送通知...") : console.log("取消一对一通知")
           desp = buildLastDesp(desp, author);
           if (strAllNotify) {
             desp = strAllNotify + "\n" + desp;
