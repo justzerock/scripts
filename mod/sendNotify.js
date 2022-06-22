@@ -1891,20 +1891,16 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                             console.log('🧧过期:' + expPocket + '，预设值:' + setPocket)
                             strExp = !(expPocket < setPocket) ? '🧧 「红包」将过期' + expPocket + '元, 共' + totalPocket + '元\n' : ''
                             strTtp = !(totalPocket < setTotalPocket) ? '🧧 「红包」共' + totalPocket + '元\n' : ''
-                            console.log(strTtp + ' test')
                             
                             // 京豆
-                            console.log('开始京豆')
                             expBean = countExpBean(desp);
-                            console.log('预设京豆' + expBean)
                             let setBean = EXB.slice(3) || EXB_NUM
                             let ttBean = desp.match(/\d+\豆.+\元./g)[0]
-                            console.log(ttBean)
                             console.log('🧧京豆总过期:' + expBean + '，预设值:' + setBean)
                             strExb = !(expBean < setBean) ? '🧧 「京豆」将过期' + expBean + '京豆(≈' + expBean / 100 + '元), 共' + ttBean + '\n' : ''
 
                             // 领取
-                            let strReward = desp.match(/.+(\兑换|\领取)/gm).toString()
+                            let strReward = desp.match(/.+(\兑换|\领取)/gm).toString() || ''
                             let strFruit = strReward.indexOf('东东农场') != -1 ? '🧧 「东东农场」可领取\n' : ''
                             let strPet = strReward.indexOf('东东萌宠') != -1 ? '🧧 「东东萌宠」可领取\n' : ''
                             let strFactory = strReward.indexOf('京喜工厂') != -1 ? '🎁 「京喜工厂」可领取\n' : ''
