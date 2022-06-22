@@ -1890,9 +1890,11 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                             console.log('🧧红包总额:' + totalPocket + '，预设值:' + setTotalPocket)
                             console.log('🧧过期:' + expPocket + '，预设值:' + setPocket)
                             strExp = !(expPocket < setPocket) ? '🧧 「红包」将过期' + expPocket + '元, 共' + totalPocket + '元\n' : ''
-                            strTtp = !(totalPocket < setTotalPocket) ? '🧧 「红包」共' + totalPocket + '元' + (expNotify ? ', 将过期' + expPocket + '元\n' : '\n') : ''
-
+                            strTtp = !(totalPocket < setTotalPocket) ? '🧧 「红包」共' + totalPocket + '元\n' : ''
+                            console.log(strTtp + ' test')
+                            
                             // 京豆
+                            console.log('开始京豆')
                             expBean = countExpBean(desp);
                             console.log('预设京豆' + expBean)
                             let setBean = EXB.slice(3) || EXB_NUM
