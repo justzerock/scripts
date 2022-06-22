@@ -1914,7 +1914,7 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
               if (strExp || strTtp || strExb || strFruit || strPet || strFactory) {
                 WP_UIDS_ONE = Uid;
                 UserRemark = '🧧 ' + UserRemarkOri + ((strFruit || strPet || strFactory) ? '#领取通知 🌈' : '#红包&京豆通知 🌈')
-                strsummary = strFruit + strPet + strFactory + (strExp ? strExp : strTtp) + strExb + ((strFruit || strPet || strFactory) ? '\n⏰ 请及时领取\n' : '\n⏰ 请及时使用\n') + '💡 点击查看详情'
+                strsummary = strFruit + strPet + strFactory + (strExp ? strExp : strTtp) + strExb + ((strFruit || strPet || strFactory) ? '\n⏰ 请及时领取' : '\n⏰ 请及时使用') + ', 点击查看详情 👉'
               }
 
 
