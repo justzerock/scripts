@@ -1877,15 +1877,42 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                             day == today || day == 0 ? WP_UIDS_ONE = Uid : null
                           }
 
+                          /* 
+                            /^.+(兑换|领取)/gm
+                          */
                           let UserRemarkOri = UserRemark;
                           let totalPocket = desp.match(/\红包总额】\d+\.\d+/g)[0].match(/\d+\.\d+/g)[0] * 1
                           let expPocket = desp.match(/\总过期\d+\.\d+/g)[0].match(/\d+\.\d+/g)[0] * 1
                           let setTotalPocket = TTP.slice(3) * 1 || TTP_NUM * 1
                           let setPocket = EXP.slice(3) * 1 || EXP_NUM * 1
-                          let expNotify = false
+                          let strExp = ''
+                          let strTtp = ''
+                          let strExb = ''
+                          UserRemark = UserRemarkOri + '#日常通知 🌈'
                           console.log('🧧红包总额:' + totalPocket + '，预设值:' + setTotalPocket)
                           console.log('🧧过期:' + expPocket + '，预设值:' + setPocket)
-                          UserRemark = UserRemarkOri + '#日常通知 🌈'
+                          // 过期红包
+                          strExp = !(expPocket < setPocket) ? '🧧 「红包」今天将过期' + expPocket + '元, 共'+ totalPocket + '元\n' : ''
+                          // 总红包
+                          strTtp = !(totalPocket < setTotalPocket) ? '🧧 「红包」共' + totalPocket + '元' + (expNotify ? ', 今天将过期' + expPocket + '元\n' : '\n') : ''
+                          // 过期京豆
+                          expBean = countExpBean(desp);
+                          let setBean = EXB.slice(3) || EXB_NUM
+                          let ttBean = desp.match(/\d+豆.+元./g)[0]
+                          console.log('🧧京豆总过期:' + expBean + '，预设值:' + setBean)
+                          strExb = !(expBean < setBean) ? '🧧 「京豆」七天内将过期' + expBean + '京豆(≈'+ expBean/100 +'元), 共' + ttBean + '\n' : ''
+                          
+                          let strGet = desp.match(/^.+(兑换|领取)/gm).toString()
+                          let strFruit = strGet.indexOf('东东农场') != -1 ? '👨‍🌾 东东农场可领取\n' : ''
+                          let strPet = strGet.indexOf('东东萌宠') != -1 ? '🐶 东东萌宠可领取\n' : ''
+                          let strFactory = strGet.indexOf('京喜工厂') != -1 ? '🏭 京喜工厂可领取\n' : ''
+
+                          if (strExp || strTtp || strExb || strFruit || strPet || strFactory) {
+                            WP_UIDS_ONE = Uid;
+                            UserRemark = '🧧 ' + UserRemarkOri + ( (strFruit||strPet||strFactory) ? '#领取通知 🌈' : '#红包&京豆通知 🌈' )
+                            strsummary = strFruit + strPet + strFactory + (strExp ? strExp : strTtp) + strExb + ((strFruit||strPet||strFactory) ? '\n⏰ 请及时领取\n' : '\n⏰ 请及时使用\n') + '💡 点击查看详情'
+                          }
+                          /* 
                           if ( !(expPocket < setPocket) || !(totalPocket < setTotalPocket) ) {
                             expNotify = true
                             WP_UIDS_ONE = Uid;
@@ -1900,7 +1927,7 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
                             WP_UIDS_ONE = Uid;
                             UserRemark = '🧧 ' + UserRemarkOri + ( expNotify ? '#红包&京豆提醒 🌈' : '#京豆提醒 🌈')
                             strsummary = (expNotify ? '🧧 你有' + totalPocket + '元红包\n' + (expPocket > 0 ? '🧧 其中' + expPocket + '元将过期\n🧧 ' : '🧧 ') : '🧧 你有') + expBean + '个京豆将过期\n🕛 请及时使用 \n\n👉 点击查看更多详情'
-                          }
+                          } */
 
                             $.nickName = "";
                             $.FoundPin = "";
