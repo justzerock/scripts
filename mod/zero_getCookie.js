@@ -1,6 +1,6 @@
 const fs = require('fs');
 let envPath = '/ql/data/scripts/envs.json'
-let cookiesPath = '/ql/data/scripts/cookies.txt'
+let cookiesPath = '/ql/data/scripts/cookie.txt'
 let envExist = fs.existsSync(envPath);
 let cookies = ''
 if (envExist) {
