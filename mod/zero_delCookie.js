@@ -8,13 +8,14 @@ if (envExist) {
     let envs = JSON.parse(rawEnvs)
     if (envs) {
         if (envs.length > 0) {
-            console.log(envs[0])
+            console.log('开始写入COOKIE')
             envs.forEach((env, idx) => {
-                if (env.name == 'JD_COOKIE' && env.status == '0') {
+                if (env.name == 'JD_COOKIE' && env.status == '1') {
                     cookies += env.value + '\n'
                 }
                 if (idx == envs.length - 1) {
                     fs.writeFileSync(cookiesPath, cookies)
+                    console.log('完成 ✅')
                 }
             })
         }
