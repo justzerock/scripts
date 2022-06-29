@@ -10,7 +10,7 @@ if (envExist) {
         if (envs.length > 0) {
             console.log('开始写入COOKIE')
             envs.forEach((env, idx) => {
-                if (env.name == 'JD_COOKIE' && env.status == '1') {
+                if (env.name == 'JD_COOKIE' && env.status == '1' && value.indexOf('804452987') == -1) {
                     cookies += env.value + '\n'
                 }
                 if (idx == envs.length - 1) {
