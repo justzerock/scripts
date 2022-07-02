@@ -1975,9 +1975,11 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
             }
           } else if (text == '京东极速版签到免单') {
             if (desp.indexOf('签到状态不满足条件') != -1) {
-              desp = desp.replaceAll(/签到失败:签到状态不满足条件/g, '✅ 完成签到，请前往京东极速版提现，完成后三天内过期')
-              UserRemark = '🧧 签到免单提现@' + UserRemark + ' 🌈'
-              strsummary = '👉 请前往「京东极速版」 --> 首页 「签到免单」 --> 立即提现\n👉 或 「京东极速版」 --> 我的 --> 签到免单 --> 立即提现'
+              desp = desp.replaceAll(/签到失败:签到状态不满足条件/g, '✅ 完成签到，请前往京东极速版提现，三天内过期')
+              UserRemark = '🧧 提现通知@' + UserRemark + ' 🌈'
+              strsummary = '👉 请前往「京东极速版」 --> 首页(或我的) --> 「签到免单」 --> 立即提现\n⏰ 请及时提现，三天内失效（从初次提醒开始）'
+            } else {
+              WP_UIDS_ONE = ''
             }
           }
           if (UserRemark) {
