@@ -1848,20 +1848,20 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
       if (tempEnv) {
         cookie = tempEnv.value;
         Uid = getuuid(tempEnv.remarks, PtPin);
-        pushWeek = getPushWeek(tempEnv.remarks);
-        pushDay = getPushDay(tempEnv.remarks);
-        EXP = getExpPocket(tempEnv.remarks);
-        TTP = getTotalPocket(tempEnv.remarks);
-        EXB = getExpBean(tempEnv.remarks);
         UserRemark = getRemark(tempEnv.remarks);
-
+        
         if (Uid) {
           console.log("查询到Uid ：" + Uid);
           WP_UIDS_ONE = Uid;
           console.log("准备一对一通知,请稍后...");
-
+          
           if (text == "京东资产变动") {
             try {
+              pushWeek = getPushWeek(tempEnv.remarks);
+              pushDay = getPushDay(tempEnv.remarks);
+              EXP = getExpPocket(tempEnv.remarks);
+              TTP = getTotalPocket(tempEnv.remarks);
+              EXB = getExpBean(tempEnv.remarks);
               WP_UIDS_ONE = ''
               if (pushWeek.toLowerCase().indexOf('week') != -1) {
                 let day = pushWeek.slice(4)
@@ -1973,6 +1973,8 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
               console.log("Debug Name2 :" + $.nickName);
               console.log("Debug Remark :" + $.Remark);
             }
+          } else if (text == '京东极速版签到免单') {
+            
           }
           if (UserRemark) {
             if (text == "京东资产变动") {
