@@ -1974,7 +1974,11 @@ async function sendNotifybyWxPucher(text, desp, PtPin, author = '\n\n本通知 B
               console.log("Debug Remark :" + $.Remark);
             }
           } else if (text == '京东极速版签到免单') {
-            
+            if (desp.indexOf('签到状态不满足条件') != -1) {
+              desp.replaceAll(/签到失败:签到状态不满足条件/g, '✅ 完成签到，请前往京东极速版提现，完成后三天内过期')
+              UserRemark = '🧧 签到免单提现@' + UserRemark + ' 🌈'
+              strsummary = '👉 请前往「京东极速版」 --> 首页 「签到免单」 --> 立即提现\n👉 或 「京东极速版」 --> 我的 --> 签到免单 --> 立即提现'
+            }
           }
           if (UserRemark) {
             if (text == "京东资产变动") {
