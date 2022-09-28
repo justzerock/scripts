@@ -12,7 +12,7 @@ $httpClient.get($argument, (error, response, data) => {
     console.log('plan_monthly_data: '+plan_monthly_data)
     let data_counter = toGB(bwg.data_counter, multiplier)
     console.log('data_counter: '+data_counter)
-    let data_next_reset = timestamp(bwg.data_next_reset)
+    let data_next_reset = toDate(bwg.data_next_reset)
     console.log('data_next_reset: '+data_next_reset)
     let content = `
     流量：已使用 ${data_counter}，共 ${plan_monthly_data}
