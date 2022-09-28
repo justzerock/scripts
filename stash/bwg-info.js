@@ -6,6 +6,7 @@ $httpClient.get(bwgurl, (error, response, data) => {
   if (error) {
     console.log(error)
   } else {
+    console.log(bwgurl)
     let bwg = JSON.parse(data)
     let today = new Date()
     let time = today.getHours() + ':' + today.getMinutes()
