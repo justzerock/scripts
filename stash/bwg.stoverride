@@ -1,0 +1,16 @@
+name: 搬瓦工流量 Tile 面板
+desc: 用于显示搬瓦工流量信息 (Stash 2.0)
+# 借用 搭配boxjs使用：BoxJS订阅以下地址: https://raw.githubusercontent.com/smartmimi/conf/master/boxjs/cookie.boxjs.json, 添加bwgid、bwgkey
+
+tiles:
+  - name: bwg_info-Tile
+    title: '位置'
+    content: '查询中……'
+    icon: 'airplane.departure'
+    backgroundColor: '#663399'
+    interval: 3600
+
+script-providers:
+  bwg_info-Tile:
+    url: https://raw.githubusercontent.com/justzerock/scripts/master/stash/bwg_info.js
+    interval: 86400
