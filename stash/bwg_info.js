@@ -9,7 +9,7 @@ $httpClient.get(bwgurl, (error, response, data) => {
     console.log(bwgurl)
     let bwg = JSON.parse(data)
     let today = new Date()
-    let time = today.getHours() + ':' + today.getMinutes()
+    let time = today.toLocaleTimeString('chinese', { hour12: false })
     let multiplier = bwg.monthly_data_multiplier
     let plan_monthly_data = toGB(bwg.plan_monthly_data, multiplier)
     let data_counter = toGB(bwg.data_counter, multiplier)
