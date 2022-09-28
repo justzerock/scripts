@@ -3,7 +3,7 @@ $httpClient.get($argument, (error, response, data) => {
   if (error) {
     console.log(error)
   } else {
-    console.log(data.node_location)
+    console.log(data)
     $done({
       title: 'test',
       content: $argument,
