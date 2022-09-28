@@ -2723,7 +2723,7 @@ function wxpusherNotifyByOne(text, desp, strsummary = "") {
       desp = `<section style="width: 24rem; max-width: 100%;border:none;border-style:none;margin:2.5rem auto;" id="shifu_imi_57"
             donone="shifuMouseDownPayStyle(&#39;shifu_imi_57&#39;)">
             <section
-                style="margin: 0px auto;text-align: left;box-shadow: 0 0 5px rgba(0,0,0,0.1);background: #fefefe;color: #3f506b;border-radius: 10px;padding: 10px 0px;box-sizing:border-box; width: 100%; display:inline-block;"
+                style="margin: 0px auto;text-align: left;box-shadow: 0 0 5px rgba(0,0,0,0.1);background: #fefefe;color: #4b4b4b;border-radius: 10px;padding: 10px 0px;box-sizing:border-box; width: 100%; display:inline-block;"
                 class="ipaiban-bc">
                 <section style="margin-top: 1rem; float: left; margin-left: 1rem; margin-left: 1rem; font-size: 1.3rem; font-weight: bold;">
                     <p style="margin: 0;">

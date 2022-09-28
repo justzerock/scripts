@@ -1,0 +1,3 @@
+// [rule: 帮助]
+// [rule: help]
+sendText("如果你有疑问，这就是答案。\n\n文章列表:\n 👉 <a href='https://mp.weixin.qq.com/s/YYPV4q2ZLopJNHt1sV9ceA'>活动入口</a>\n 👉 <a href='https://mp.weixin.qq.com/s/lmztm6UWIKBKYbIgxjyePQ'>更新通道</a>\n 👉 <a href='https://mp.weixin.qq.com/s/xhKEX9X7MdKJ48VioqiL1A'>自定义通知</a>\n\n直达网站：\n 👉 <a href='https://nark.zerock.top'>鲤游方舟</a>\n\n没解决的话，你可以发「菜单」获取命令\n或「留言 + 内容 + 昵称」\n\n新手需手动选择「东东农场」与「东东萌宠」，可以直接发活动名字获取入口")
