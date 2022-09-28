@@ -3,10 +3,10 @@ $httpClient.get('https://api.64clouds.com/v1/getServiceInfo?veid=1172197&api_key
   if (error) {
     console.log(error)
   } else {
-    console.log(data)
+    let bwg = JSON.parse(data)
     $done({
-      title: '地址',
-      content: data.node_location,
+      title: bwg.node_location,
+      content: bwg.email,
       backgroundColor: "#663399",
       icon: "network",
     })
