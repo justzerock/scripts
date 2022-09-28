@@ -5,8 +5,8 @@ $httpClient.get('https://api.64clouds.com/v1/getServiceInfo?veid=1172197&api_key
   } else {
     console.log(data)
     $done({
-      title: 'new',
-      content: data,
+      title: '地址',
+      content: data.node_location,
       backgroundColor: "#663399",
       icon: "network",
     })
