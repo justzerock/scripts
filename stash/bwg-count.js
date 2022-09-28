@@ -4,16 +4,16 @@ $httpClient.get($argument, (error, response, data) => {
     console.log(error)
   } else {
     let bwg = JSON.parse(data)
-    let date = new Date()
-    let time = date.getHours() + ':' + date.getMinutes()
+    let today = new Date()
+    let time = today.getHours() + ':' + today.getMinutes()
     let multiplier = bwg.monthly_data_multiplier
     let plan_monthly_data = toGB(bwg.plan_monthly_data, multiplier)
     let data_counter = toGB(bwg.data_counter, multiplier)
-    let data_next_reset = toDate(bwg.data_next_reset)
+    let data_next_reset = toDate(bwg.data_next_reset, today)
     let content = `🌈 已使用 ${data_counter} / ${plan_monthly_data}GB
     剩余 ${(plan_monthly_data - data_counter).toFixed(2)}GB
 
-    更新于 ${time}，流量将于 ${data_next_reset} 重置`
+    更新于 ${time}，${data_next_reset}`
 
     $done({
       title: '🇺🇸 ' + bwg.node_location,
@@ -29,9 +29,14 @@ function toGB(bit, multi) {
   return GB.toFixed(2)
 }
 
-function toDate(timestamp) {
-  let date = new Date(timestamp*1000)
-  let month = date.getMonth() + 1
-  let day = date.getDate()
-  return month + '月' + day + '日'
+function toDate(reset, today) {
+  let diff = reset*1000 - today
+  let day = Math.floor(diff/(24*60*60*1000))
+  if (day == 0) {
+    let hour_st = diff%(24*60*60*1000)
+    let hour = Math.floor((hour_st/(60*60*1000)))
+    return hour + '小时后重置流量'
+  } else {
+    return day + '天后重置流量'
+  }
 }
