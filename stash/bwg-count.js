@@ -1,11 +1,11 @@
 
-$httpClient.get('https://api.64clouds.com/v1/getServiceInfo?veid=1172197&api_key=private_X8ri9QVK0tpJEOERPP02aE3K', (error, response, data) => {
+$httpClient.get($argument, (error, response, data) => {
   if (error) {
     console.log(error)
   } else {
     let bwg = JSON.parse(data)
     $done({
-      title: bwg.node_location,
+      title: bwg.node_location + 'haha',
       content: bwg.email,
       backgroundColor: "#663399",
       icon: "network",
