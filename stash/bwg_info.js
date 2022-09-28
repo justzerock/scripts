@@ -6,7 +6,6 @@ $httpClient.get(bwgurl, (error, response, data) => {
   if (error) {
     console.log(error)
   } else {
-    console.log(bwgurl)
     let bwg = JSON.parse(data)
     let today = new Date()
     let time = today.toLocaleTimeString('chinese', { hour12: false })
@@ -17,7 +16,7 @@ $httpClient.get(bwgurl, (error, response, data) => {
     let content = `🌈 已使用 ${data_counter} / ${plan_monthly_data}GB
     剩余 ${(plan_monthly_data - data_counter).toFixed(2)}GB
 
-    更新于 ${time}，${data_next_reset}`
+    🕒 ${time}，${data_next_reset}`
 
     $done({
       title: '🇺🇸 ' + bwg.node_location,
@@ -39,8 +38,8 @@ function toDate(reset, today) {
   if (day == 0) {
     let hour_st = diff%(24*60*60*1000)
     let hour = Math.floor((hour_st/(60*60*1000)))
-    return hour + '小时后重置流量'
+    return hour + '小时后重置'
   } else {
-    return day + '天后重置流量'
+    return day + '天后重置'
   }
 }
