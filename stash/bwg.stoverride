@@ -8,9 +8,9 @@ tiles:
     content: '查询中……'
     icon: 'airplane.departure'
     backgroundColor: '#663399'
-    interval: 3600
+    interval: 30
 
 script-providers:
   bwg_info-Tile:
     url: https://raw.githubusercontent.com/justzerock/scripts/master/stash/bwg_info.js
-    interval: 86400
+    interval: 60
