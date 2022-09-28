@@ -1,11 +1,11 @@
 const bwgid = $persistentStore.read("bwgid")
 const bwgkey = $persistentStore.read("bwgkey")
 const bwgurl = `https://api.64clouds.com/v1/getServiceInfo?veid=${bwgid}&api_key=${bwgkey}`
-$httpClient.get($argument, (error, response, data) => {
+
+$httpClient.get(bwgurl, (error, response, data) => {
   if (error) {
     console.log(error)
   } else {
-    console.log($persistentStore.read("bwgkey"))
     let bwg = JSON.parse(data)
     let today = new Date()
     let time = today.getHours() + ':' + today.getMinutes()
