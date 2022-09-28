@@ -5,7 +5,7 @@ $httpClient.get($argument, (error, response, data) => {
   } else {
     $done({
       title: data.node_location,
-      content: data.data_counter,
+      content: $argument,
       backgroundColor: "#663399",
       icon: "network",
     })
