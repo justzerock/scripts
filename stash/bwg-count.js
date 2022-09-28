@@ -5,7 +5,7 @@ $httpClient.get($argument, (error, response, data) => {
   } else {
     console.log(data)
     $done({
-      title: 'test',
+      title: '测试',
       content: $argument,
       backgroundColor: "#663399",
       icon: "network",
