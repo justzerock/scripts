@@ -3,6 +3,7 @@ $httpClient.get($argument, (error, response, data) => {
   if (error) {
     console.log(error)
   } else {
+    console.log($persistentStore.read("bwgkey"))
     let bwg = JSON.parse(data)
     let today = new Date()
     let time = today.getHours() + ':' + today.getMinutes()
@@ -19,7 +20,7 @@ $httpClient.get($argument, (error, response, data) => {
       title: '🇺🇸 ' + bwg.node_location,
       content: content,
       backgroundColor: "#663399",
-      icon: "network",
+      icon: "airplane.departure",
     })
   }
 })
