@@ -5,14 +5,31 @@ http:
   mitm:
     - "api.bilibili.com"
     - "app.bilibili.com"
+    - "biliapi.*.com"
   script:
     - match: ^https:\/\/ap(p|i)\.bilibili\.com\/((pgc\/player\/api\/playurl)|(x\/v2\/account\/myinfo\?)|(x\/v2\/account/mine\?))
       name: bilifj
       type: response
       require-body: true
       timeout: 10
-      
+    - match: ^https:\/\/biliapi\..+\.com\/api\/app\/user\/info
+      name: blbl
+      type: response
+      require-body: true
+      timeout: 10
+    - match: ^https:\/\/biliapi\..+\.com\/api\/app\/.+
+      name: blbls
+      type: request
+      require-body: true
+      timeout: 10
+    
 script-providers:
   bilifj:
     url: https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/js/backup/bilifj.js
+    interval:  86400
+  blbl:
+    url: http://ox.xmkczs.com/quantumultX/blbl.js
+    interval:  86400
+  blbls:
+    url: http://ox.xmkczs.com/quantumultX/blbls.js
     interval:  86400
