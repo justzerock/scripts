@@ -1,0 +1,192 @@
+mode: rule
+log-level: info
+dns:
+  default-nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+    - system
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+    - system
+  fake-ip-filter:
+    # from: https://github.com/Kr328/ClashForAndroid/blob/ffa559a57102ed8bc20eba41aa236a7764741bf9/core/src/main/golang/native/config/defaults.go#L10
+    # Stun Services
+    - "+.stun.*.*"
+    - "+.stun.*.*.*"
+    - "+.stun.*.*.*.*"
+    - "+.stun.*.*.*.*.*"
+    # Google Voices
+    - "lens.l.google.com"
+    # Nintendo Switch
+    - "*.n.n.srv.nintendo.net"
+    # PlayStation
+    - "+.stun.playstation.net"
+    # XBox
+    - "xbox.*.*.microsoft.com"
+    - "*.*.xboxlive.com"
+    # Microsoft
+    - "*.msftncsi.com"
+    - "*.msftconnecttest.com"
+    # Bilibili CDN
+    - "*.mcdn.bilivideo.cn"
+http:
+  url-rewrite:
+    - ^https?:\/\/(www.)?(g|google)\.cn https://www.google.com 302
+script:
+  shortcuts:
+    quic: network == 'udp' and (dst_port == 443 or dst_port == 4483 or dst_port == 9305)
+rule-providers:
+  direct:
+    behavior: domain-text
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/direct.txt
+  proxy:
+    behavior: domain-text
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/proxy.txt
+  reject:
+    behavior: domain-text
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/reject.txt
+  private:
+    behavior: domain-text
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/private.txt
+  apple:
+    behavior: domain-text
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/apple.txt
+  icloud:
+    behavior: domain-text
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/icloud.txt
+  telegramcidr:
+    behavior: ipcidr
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt
+  cncidr:
+    behavior: ipcidr
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt
+  lancidr:
+    behavior: ipcidr
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt
+  zerock:
+    behavior: domain-text
+    interval: 86400
+    url: https://cdn.staticaly.com/gh/justzerock/scripts/master/stash/direct.txt
+
+proxy-groups:
+  - name: Fallback
+    type: fallback
+    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Bypass.png?raw=true
+    url: https://captive.apple.com
+    interval: 300
+    use:
+      - all-sub
+
+  - name: 自动选择
+    type: url-test
+    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Auto.png?raw=true
+    url: https://captive.apple.com
+    interval: 300
+    use:
+      - all-sub
+
+  - name: 手动选择
+    type: select
+    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Rocket.png?raw=true
+    proxies:
+      - Fallback
+      - 自动选择
+      - DIRECT
+    use:
+      - all-sub
+
+  - name: 全球直连
+    type: select
+    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/China_Map.png?raw=true
+    proxies: &global-direct
+      - DIRECT
+      - 手动选择
+
+  - name: 自用直连
+    type: select
+    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Direct.png?raw=true
+    proxies:
+      *global-direct
+
+  - name: 苹果服务
+    type: select
+    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Apple.png?raw=true
+    proxies:
+      *global-direct
+
+  - name: 广告拦截
+    type: select
+    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Advertising.png?raw=true
+    proxies:
+      - REJECT
+      - DIRECT
+
+  - name: 全球代理
+    type: select
+    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Global.png?raw=true
+    proxies: &global-proxy
+      - 手动选择
+      - DIRECT
+
+  - name: 电报信息
+    type: select
+    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Telegram.png?raw=true
+    proxies:
+      *global-proxy
+
+  - name: 漏网之鱼
+    type: select
+    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Final.png?raw=true
+    proxies:
+      - 手动选择
+      - DIRECT
+
+
+      
+# 假如用组合订阅多个机场，就没必要使用 subscribe-url 了
+# subscribe-url: https://sub.store/download/collection/subs
+# 替换上面文字用于 Stash 获取机场流量信息并在主页显示 （Stash1.6.1 build 287+支持）
+
+# 远程资源默认配置
+remote-resources-default-config: &remote-resources-default-config
+  type: http
+  interval: 86400
+
+proxy-providers:
+  # 全部节点
+  all-sub: &all-sub # 建立锚点
+    <<: *remote-resources-default-config
+    # 此处默认使用 Sub-Store 订阅链接，如果需要使用其他订阅链接，可以替换下面的 url 即可
+    # Sub-Store 与 Clash 类型订阅链接，都可以作为 url 的值。多个链接使用英文符号的竖杠 | 隔开一起写上即可
+    url: https://sub.store/download/collection/server-group
+    path: ./all.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: https://captive.apple.com
+
+
+rules:
+  - SCRIPT,quic,REJECT
+  - RULE-SET,zerock,自用直连
+  - RULE-SET,direct,全球直连
+  - RULE-SET,proxy,全球代理
+  - RULE-SET,reject,广告拦截
+  - RULE-SET,private,全球直连
+  - RULE-SET,apple,苹果服务
+  - RULE-SET,icloud,苹果服务
+  - RULE-SET,telegramcidr,电报信息
+  - RULE-SET,cncidr,全球直连
+  - RULE-SET,lancidr,全球直连
+  - GEOIP,CN,DIRECT
+  - MATCH,漏网之鱼
