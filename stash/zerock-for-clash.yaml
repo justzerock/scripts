@@ -35,9 +35,7 @@ dns:
 http:
   url-rewrite:
     - ^https?:\/\/(www.)?(g|google)\.cn https://www.google.com 302
-script:
-  shortcuts:
-    quic: network == 'udp' and (dst_port == 443 or dst_port == 4483 or dst_port == 9305)
+
 rule-providers:
   direct:
     behavior: domain-text
@@ -179,7 +177,6 @@ proxy-providers:
 
 
 rules:
-  - SCRIPT,quic,REJECT
   - RULE-SET,zerock,自用直连
   - RULE-SET,direct,全球直连
   - RULE-SET,proxy,全球代理
