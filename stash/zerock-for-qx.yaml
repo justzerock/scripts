@@ -77,3 +77,5 @@ FINAL,漏网之鱼
 https://ghproxy.com/https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js, tag=boxjs, path=^/, enabled=true
 
 [task_local]
+
+[mitm]
