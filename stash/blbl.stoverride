@@ -1,5 +1,5 @@
-name: 解锁B站
-desc: 解锁B站
+name: 解锁B站高画质
+desc: 解锁B站高画质
 
 http:
   mitm:
