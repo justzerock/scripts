@@ -21,7 +21,7 @@ https://gist.githubusercontent.com/justzerock/2be7417a6f877a728d29feb0147ddd5f/r
 
 [policy]
 url-latency-benchmark=自动选择, resource-tag-regex=^*, check-interval=600, tolerance=0, alive-checking=false, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Auto.png
-static=手动选择, 自动选择, direct, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Manual.png
+static=手动选择, 自动选择, direct, server-tag-regex=^*, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Manual.png
 static=全球直连, direct, 手动选择, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/China.png
 static=自用直连, direct, 手动选择, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/github.png
 static=苹果服务, direct, 手动选择, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Apple.png
@@ -32,10 +32,8 @@ static=谷歌服务, 手动选择, direct, img-url=https://raw.githubusercontent
 static=漏网之鱼, 手动选择, direct, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
 
 [rewrite_remote]
-https://github.com/sub-store-org/Sub-Store/raw/master/config/QX.snippet, tag=sub store, update-interval=172800, opt-parser=false, enabled=true
 https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rewrite/QuantumultX/Redirect/Redirect.conf, tag=重定向, update-interval=172800, opt-parser=false, enabled=true
 https://ghproxy.com/https://github.com/chavyleung/scripts/raw/master/box/rewrite/boxjs.rewrite.quanx.conf, tag=boxjs, update-interval=172800, opt-parser=false, enabled=true
-https://subweb.s3.fr-par.scw.cloud/Module/embyUnlocked.conf, tag=emby, update-interval=172800, opt-parser=false, enabled=true
 https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu_plus.qxrewrite, tag=知乎助手_去广告及体验增强, update-interval=86400, opt-parser=false, enabled=true
 https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/bilibili/bilibili_plus.qxrewrite, tag=哔哩哔哩_去广告, update-interval=86400, opt-parser=false, enabled=true
 https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/startup/startup.qxrewrite, tag=开屏去广告, enabled=true
@@ -74,7 +72,6 @@ FINAL,漏网之鱼
 
 
 [http_backend]
-https://ghproxy.com/https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js, tag=boxjs, path=^/, enabled=true
 
 [task_local]
 
