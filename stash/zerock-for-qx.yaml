@@ -1,0 +1,79 @@
+# update_url: https://cdn.staticaly.com/gh/justzerock/scripts/master/stash/zerock-for-qx.yaml
+
+[general]
+excluded_routes=192.168.0.0/16, 172.16.0.0/12, 100.64.0.0/10, 10.0.0.0/8
+geo_location_checker=http://ip-api.com/json/?lang=zh-CN, https://ghproxy.com/https://github.com/KOP-XIAO/QuantumultX/raw/master/Scripts/IP_API.js
+network_check_url=http://www.baidu.com/
+server_check_url=http://www.gstatic.com/generate_204
+
+resource_parser_url=https://ghproxy.com/https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/resource-parser.js
+
+[dns]
+no-system
+no-ipv6
+doh-server=https://dns.alidns.com/dns-query,https://doh.pub/dns-query,https://cloudflare-dns.com/dns-query
+
+
+[server_remote]
+https://gist.githubusercontent.com/justzerock/2be7417a6f877a728d29feb0147ddd5f/raw/sub-for-qx, tag=QX 订阅, update-interval=172800, opt-parser=true, enabled=true
+
+[server_local]
+
+[policy]
+url-latency-benchmark=自动选择, resource-tag-regex=^*, check-interval=600, tolerance=0, alive-checking=false, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Auto.png
+static=手动选择, 自动选择, direct, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Manual.png
+static=全球直连, direct, 手动选择, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/China.png
+static=自用直连, direct, 手动选择, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/github.png
+static=苹果服务, direct, 手动选择, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Apple.png
+static=广告拦截, reject, direct, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Adblock.png
+static=全球代理, 手动选择, direct, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png
+static=电报信息, 手动选择, direct, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Telegram.png
+static=谷歌服务, 手动选择, direct, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png
+static=漏网之鱼, 手动选择, direct, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
+
+[rewrite_remote]
+https://github.com/sub-store-org/Sub-Store/raw/master/config/QX.snippet, tag=sub store, update-interval=172800, opt-parser=false, enabled=true
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rewrite/QuantumultX/Redirect/Redirect.conf, tag=重定向, update-interval=172800, opt-parser=false, enabled=true
+https://ghproxy.com/https://github.com/chavyleung/scripts/raw/master/box/rewrite/boxjs.rewrite.quanx.conf, tag=boxjs, update-interval=172800, opt-parser=false, enabled=true
+https://subweb.s3.fr-par.scw.cloud/Module/embyUnlocked.conf, tag=emby, update-interval=172800, opt-parser=false, enabled=true
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu_plus.qxrewrite, tag=知乎助手_去广告及体验增强, update-interval=86400, opt-parser=false, enabled=true
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/bilibili/bilibili_plus.qxrewrite, tag=哔哩哔哩_去广告, update-interval=86400, opt-parser=false, enabled=true
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/startup/startup.qxrewrite, tag=开屏去广告, enabled=true
+
+[rewrite_local]
+
+
+[filter_remote]
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Direct/Direct.list, tag=直连, force-policy=全球直连, update-interval=172800, opt-parser=false, enabled=true
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/ChinaMax/ChinaMax.list, tag=中国, force-policy=全球直连, update-interval=172800, opt-parser=false, enabled=true
+https://cdn.staticaly.com/gh/justzerock/scripts/master/stash/direct.list, tag=自用直连, force-policy=自用直连, update-interval=172800, opt-parser=false, enabled=true
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Apple/Apple.list, tag=苹果, force-policy=苹果服务, update-interval=172800, opt-parser=false, enabled=true
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Advertising/Advertising.list, tag=广告, force-policy=广告拦截, update-interval=172800, opt-parser=false, enabled=true
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Global/Global.list, tag=全球, force-policy=全球代理, update-interval=172800, opt-parser=false, enabled=true
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Telegram/Telegram.list, tag=电报, force-policy=电报信息, update-interval=172800, opt-parser=false, enabled=true
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Google/Google.list, tag=谷歌, force-policy=谷歌服务, update-interval=172800, opt-parser=false, enabled=true
+
+[filter_local]
+# 浏览器安全提示
+host-suffix, safebrowsing.urlsec.qq.com, reject
+host-suffix, safebrowsing.googleapis.com, reject
+host-suffix, lookup.api.bsb.baidu.com, reject
+
+# 知乎去广告，以下规则请放置在filter_local最顶部
+IP-CIDR,118.89.204.198/32,REJECT
+IP6-CIDR,2402:4e00:1200:ed00:0:9089:6dac:96b6/128,REJECT
+HOST,118.89.204.198,REJECT
+# 知乎去广告，以下规则的位置越前方越好
+HOST,appcloud2.in.zhihu.com,REJECT
+HOST,mqtt.zhihu.com,reject
+HOST,sugar.zhihu.com,reject
+USER-AGENT,AVOS*,REJECT
+
+GEOIP,CN,DIRECT
+FINAL,漏网之鱼
+
+
+[http_backend]
+https://ghproxy.com/https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js, tag=boxjs, path=^/, enabled=true
+
+[task_local]

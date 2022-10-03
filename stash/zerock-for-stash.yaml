@@ -1,3 +1,5 @@
+# update-url: https://cdn.staticaly.com/gh/justzerock/scripts/master/stash/zerock-for-stash.yaml
+
 mode: rule
 log-level: info
 dns:
