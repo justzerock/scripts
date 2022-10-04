@@ -5,14 +5,11 @@ excluded_routes=192.168.0.0/16, 172.16.0.0/12, 100.64.0.0/10, 10.0.0.0/8
 geo_location_checker=http://ip-api.com/json/?lang=zh-CN, https://ghproxy.com/https://github.com/KOP-XIAO/QuantumultX/raw/master/Scripts/IP_API.js
 network_check_url=http://www.baidu.com/
 server_check_url=http://www.gstatic.com/generate_204
-
 resource_parser_url=https://ghproxy.com/https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/resource-parser.js
 
 [dns]
-no-system
-no-ipv6
-doh-server=https://dns.alidns.com/dns-query,https://doh.pub/dns-query,https://cloudflare-dns.com/dns-query
-
+server=223.5.5.5
+server=119.29.29.29
 
 [server_remote]
 https://gist.githubusercontent.com/justzerock/2be7417a6f877a728d29feb0147ddd5f/raw/sub-for-qx, tag=QX 订阅, update-interval=172800, opt-parser=true, enabled=true
@@ -20,8 +17,9 @@ https://gist.githubusercontent.com/justzerock/2be7417a6f877a728d29feb0147ddd5f/r
 [server_local]
 
 [policy]
-url-latency-benchmark=自动选择, resource-tag-regex=^*, check-interval=600, tolerance=0, alive-checking=false, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Auto.png
-static=手动选择, 自动选择, direct, server-tag-regex=^*, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Manual.png
+available=默认可用, resource-tag-regex=^*, check-interval=600, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Available.png
+url-latency-benchmark=延迟最低, resource-tag-regex=^*, check-interval=600, tolerance=0, alive-checking=false, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Auto.png
+static=手动选择, 默认可用, 延迟最低, direct, server-tag-regex=^*, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Manual.png
 static=全球直连, direct, 手动选择, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/China.png
 static=自用直连, direct, 手动选择, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/github.png
 static=苹果服务, direct, 手动选择, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Apple.png

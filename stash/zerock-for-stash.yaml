@@ -5,7 +5,7 @@ log-level: info
 dns:
   default-nameserver:
     - 223.5.5.5
-    - 114.114.114.114
+    - 119.29.29.29
     - system
   nameserver:
     - https://doh.pub/dns-query
@@ -126,7 +126,7 @@ rule-providers:
     path: ./ruleset/zerock.yaml
 
 proxy-groups:
-  - name: Fallback
+  - name: 默认可用
     type: fallback
     icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Bypass.png?raw=true
     url: https://captive.apple.com
@@ -134,7 +134,7 @@ proxy-groups:
     use:
       - all-sub
 
-  - name: 自动选择
+  - name: 延迟最低
     type: url-test
     icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Auto.png?raw=true
     url: https://captive.apple.com
@@ -146,8 +146,8 @@ proxy-groups:
     type: select
     icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Rocket.png?raw=true
     proxies:
-      - Fallback
-      - 自动选择
+      - 默认可用
+      - 延迟最低
       - DIRECT
     use:
       - all-sub
