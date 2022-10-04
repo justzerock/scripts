@@ -73,10 +73,10 @@ rule-providers:
     behavior: ipcidr
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt
-  zerock:
-    behavior: domain-text
-    interval: 86400
-    url: https://cdn.staticaly.com/gh/justzerock/scripts/master/stash/direct.txt
+  #zerock:
+  #  behavior: domain-text
+  #  interval: 86400
+  #  url: https://cdn.staticaly.com/gh/justzerock/scripts/master/stash/direct.txt
 
 proxy-groups:
   - name: Fallback
@@ -112,11 +112,11 @@ proxy-groups:
       - DIRECT
       - 手动选择
 
-  - name: 自用直连
-    type: select
-    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Direct.png?raw=true
-    proxies:
-      *global-direct
+  #- name: 自用直连
+  #  type: select
+  #  icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Direct.png?raw=true
+  #  proxies:
+  #    *global-direct
 
   - name: 苹果服务
     type: select
