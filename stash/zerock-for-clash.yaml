@@ -38,45 +38,55 @@ http:
 
 rule-providers:
   direct:
+    <<: *remote-resources-default-config
     behavior: domain-text
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/direct.txt
   proxy:
+    <<: *remote-resources-default-config
     behavior: domain-text
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/proxy.txt
   reject:
+    <<: *remote-resources-default-config
     behavior: domain-text
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/reject.txt
   private:
+    <<: *remote-resources-default-config
     behavior: domain-text
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/private.txt
   apple:
+    <<: *remote-resources-default-config
     behavior: domain-text
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/apple.txt
   icloud:
+    <<: *remote-resources-default-config
     behavior: domain-text
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/icloud.txt
   telegramcidr:
+    <<: *remote-resources-default-config
     behavior: ipcidr
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt
   cncidr:
+    <<: *remote-resources-default-config
     behavior: ipcidr
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt
   lancidr:
+    <<: *remote-resources-default-config
     behavior: ipcidr
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt
-  #zerock:
-  #  behavior: domain-text
-  #  interval: 86400
-  #  url: https://cdn.staticaly.com/gh/justzerock/scripts/master/stash/direct.txt
+  zerock:
+    <<: *remote-resources-default-config
+    behavior: domain-text
+    interval: 86400
+    url: https://cdn.staticaly.com/gh/justzerock/scripts/master/stash/direct.txt
 
 proxy-groups:
   - name: Fallback
@@ -112,11 +122,11 @@ proxy-groups:
       - DIRECT
       - 手动选择
 
-  #- name: 自用直连
-  #  type: select
-  #  icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Direct.png?raw=true
-  #  proxies:
-  #    *global-direct
+  - name: 自用直连
+    type: select
+    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Direct.png?raw=true
+    proxies:
+      *global-direct
 
   - name: 苹果服务
     type: select
