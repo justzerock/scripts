@@ -118,7 +118,7 @@ rule-providers:
     <<: *remote-resources-default-config
     behavior: domain
     interval: 86400
-    url: https://cdn.staticaly.com/gh/justzerock/scripts/master/stash/direct.txt
+    url: https://cdn.staticaly.com/gh/justzerock/scripts/master/stash/direct-domain.txt
     path: ./ruleset/zerock.yaml
 
 proxy-groups:
