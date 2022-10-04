@@ -69,51 +69,61 @@ rule-providers:
     behavior: domain-text
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/direct.txt
+    path: ./ruleset/direct.txt
   proxy:
     <<: *remote-resources-default-config
     behavior: domain-text
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/proxy.txt
+    path: ./ruleset/proxy.txt
   reject:
     <<: *remote-resources-default-config
     behavior: domain-text
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/reject.txt
+    path: ./ruleset/reject.txt
   private:
     <<: *remote-resources-default-config
     behavior: domain-text
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/private.txt
+    path: ./ruleset/private.txt
   apple:
     <<: *remote-resources-default-config
     behavior: domain-text
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/apple.txt
+    path: ./ruleset/apple.txt
   icloud:
     <<: *remote-resources-default-config
     behavior: domain-text
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/icloud.txt
+    path: ./ruleset/icloud.txt
   telegramcidr:
     <<: *remote-resources-default-config
     behavior: ipcidr
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt
+    path: ./ruleset/telegramcidr.txt
   cncidr:
     <<: *remote-resources-default-config
     behavior: ipcidr
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt
+    path: ./ruleset/cncidr.txt
   lancidr:
     <<: *remote-resources-default-config
     behavior: ipcidr
     interval: 86400
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt
+    path: ./ruleset/lancidr.txt
   zerock:
     <<: *remote-resources-default-config
     behavior: domain-text
     interval: 86400
     url: https://cdn.staticaly.com/gh/justzerock/scripts/master/stash/direct.txt
+    path: ./ruleset/zerock.txt
 
 proxy-groups:
   - name: Fallback
