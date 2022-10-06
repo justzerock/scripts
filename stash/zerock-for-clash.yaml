@@ -1,16 +1,18 @@
 # update-url: https://cdn.staticaly.com/gh/justzerock/scripts/master/stash/zerock-for-clash.yaml
 
-mode: rule
+mixed-port: 7890
+allow-lan: true
+mode: Rule
 log-level: info
+external-controller: 0.0.0.0:9090
+
 dns:
   default-nameserver:
     - 223.5.5.5
     - 119.29.29.29
-    - system
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
-    - system
   fake-ip-filter:
     # from: https://github.com/Kr328/ClashForAndroid/blob/ffa559a57102ed8bc20eba41aa236a7764741bf9/core/src/main/golang/native/config/defaults.go#L10
     # Stun Services
@@ -52,7 +54,7 @@ proxy-providers:
     <<: *remote-resources-default-config
     # 此处默认使用 Sub-Store 订阅链接，如果需要使用其他订阅链接，可以替换下面的 url 即可
     # Sub-Store 与 Clash 类型订阅链接，都可以作为 url 的值。多个链接使用英文符号的竖杠 | 隔开一起写上即可
-    url: https://gist.githubusercontent.com/justzerock/2be7417a6f877a728d29feb0147ddd5f/raw/sub-for-clash
+    url: sub-for-clash
     path: ./all.yaml
     health-check:
       enable: true

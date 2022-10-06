@@ -12,7 +12,7 @@ server=223.5.5.5
 server=119.29.29.29
 
 [server_remote]
-https://gist.githubusercontent.com/justzerock/2be7417a6f877a728d29feb0147ddd5f/raw/sub-for-qx, tag=QX 订阅, update-interval=172800, opt-parser=true, enabled=true
+# sub-for-qx
 
 [server_local]
 

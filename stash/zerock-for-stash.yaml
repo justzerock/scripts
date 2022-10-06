@@ -6,11 +6,9 @@ dns:
   default-nameserver:
     - 223.5.5.5
     - 119.29.29.29
-    - system
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
-    - system
   fake-ip-filter:
     # from: https://github.com/Kr328/ClashForAndroid/blob/ffa559a57102ed8bc20eba41aa236a7764741bf9/core/src/main/golang/native/config/defaults.go#L10
     # Stun Services
@@ -126,14 +124,6 @@ rule-providers:
     path: ./ruleset/zerock.yaml
 
 proxy-groups:
-  - name: 默认可用
-    type: fallback
-    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Bypass.png?raw=true
-    url: https://captive.apple.com
-    interval: 300
-    use:
-      - all-sub
-
   - name: 延迟最低
     type: url-test
     icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Auto.png?raw=true
@@ -146,8 +136,10 @@ proxy-groups:
     type: select
     icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Rocket.png?raw=true
     proxies:
-      - 默认可用
       - 延迟最低
+      - 🇺🇸美国
+      - 🇭🇰香港
+      - 🇯🇵日本
       - DIRECT
     use:
       - all-sub
@@ -195,9 +187,35 @@ proxy-groups:
     type: select
     icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Final.png?raw=true
     proxies:
-      - 手动选择
-      - DIRECT
+      *global-proxy
 
+
+  - name: 🇺🇸美国
+    type: url-test
+    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/US.png?raw=true
+    url: https://captive.apple.com
+    interval: 300
+    use:
+      - all-sub
+    filter: "美|🇺🇲|US|(?i)States|American"
+
+  - name: 🇭🇰香港
+    type: url-test
+    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/HK.png?raw=true
+    url: https://captive.apple.com
+    interval: 300
+    use:
+      - all-sub
+    filter: "港|🇭🇰|HK|(?i)Hong"
+
+  - name: 🇯🇵日本
+    type: url-test
+    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/JP.png?raw=true
+    url: https://captive.apple.com
+    interval: 300
+    use:
+      - all-sub
+    filter: "日|🇯🇵|东京|JP|(?i)Japan"
 
 
 rules:
