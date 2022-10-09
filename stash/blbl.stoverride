@@ -7,12 +7,12 @@ http:
     - "app.bilibili.com"
   script:
     - match: ^https:\/\/ap(p|i)\.bilibili\.com\/((pgc\/player\/api\/playurl)|(x\/v2\/account\/myinfo\?)|(x\/v2\/account/mine\?))
-      name: bilifj
+      name: biliHD
       type: response
       require-body: true
       timeout: 10
     
 script-providers:
-  bilifj:
-    url: https://ghproxy.com/https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/js/backup/bilifj.js
+  biliHD:
+    url: https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/biliHD.js
     interval:  86400

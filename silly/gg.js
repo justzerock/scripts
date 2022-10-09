@@ -64,7 +64,7 @@ function main() {
       if (!data.searchInformation.totalResults) {
         answer = '🦊 找不到你想看的。可以去茶杯狐找找 https://cupfox.app 👈 复制链接到浏览器打开'
       } else {
-        answer = '👉 复制链接到浏览器打开\n\n'
+        answer = '👉 复制链接到浏览器打开\n 👐 打不开的链接，请直接发「留言 + 链接」，我会及时看到并处理\n\n'
         data.items.forEach((res, index) => {
           answer += (index + 1) + '、' + res.title + '\n链接：' + res.link + '\n\n'
         });
