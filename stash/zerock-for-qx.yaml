@@ -17,24 +17,31 @@ server=119.29.29.29
 [server_local]
 
 [policy]
-available=默认可用, resource-tag-regex=^*, check-interval=600, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Available.png
-url-latency-benchmark=延迟最低, resource-tag-regex=^*, check-interval=600, tolerance=0, alive-checking=false, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Auto.png
-static=手动选择, 默认可用, 延迟最低, direct, server-tag-regex=^*, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Manual.png
-static=全球直连, direct, 手动选择, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/China.png
-static=自用直连, direct, 手动选择, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/github.png
-static=苹果服务, direct, 手动选择, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Apple.png
-static=广告拦截, reject, direct, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Adblock.png
-static=全球代理, 手动选择, direct, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png
-static=电报信息, 手动选择, direct, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Telegram.png
-static=谷歌服务, 手动选择, direct, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png
-static=漏网之鱼, 手动选择, direct, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
+url-latency-benchmark=延迟最低, resource-tag-regex=^*, check-interval=600, tolerance=0, alive-checking=false, img-url=https://ghps.cc/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Auto.png
+static=手动选择, 延迟最低, 美国, 香港, 台湾, 日本, 新加坡, 英国, direct, server-tag-regex=^*, img-url=https://ghps.cc/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Manual.png
+static=全球直连, direct, 手动选择, img-url=https://ghps.cc/https://raw.githubusercontent.com/Orz-3/mini/master/Color/China.png
+static=自用直连, direct, 手动选择, img-url=https://ghps.cc/https://raw.githubusercontent.com/Orz-3/mini/master/Color/github.png
+static=苹果服务, direct, 手动选择, img-url=https://ghps.cc/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Apple.png
+static=广告拦截, reject, direct, img-url=https://ghps.cc/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Adblock.png
+static=全球代理, 手动选择, direct, img-url=https://ghps.cc/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png
+static=电报信息, 手动选择, direct, img-url=https://ghps.cc/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Telegram.png
+static=谷歌服务, 手动选择, direct, img-url=https://ghps.cc/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png
+static=漏网之鱼, 手动选择, direct, img-url=https://ghps.cc/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
+url-latency-benchmark=美国, server-tag-regex=美国|US|🇺🇸, check-interval=600, tolerance=0, alive-checking=false, img-url=https://ghps.cc/https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
+url-latency-benchmark=香港, server-tag-regex=香港|HK|🇭🇰, check-interval=600, tolerance=0, alive-checking=false, img-url=https://ghps.cc/https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png
+url-latency-benchmark=台湾, server-tag-regex=台湾|TW, check-interval=600, tolerance=0, alive-checking=false, img-url=https://ghps.cc/https://raw.githubusercontent.com/Orz-3/mini/master/Color/CN.png
+url-latency-benchmark=日本, server-tag-regex=日本|JP|🇯🇵, check-interval=600, tolerance=0, alive-checking=false, img-url=https://ghps.cc/https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png
+url-latency-benchmark=新加坡, server-tag-regex=新加坡|SG|🇸🇬, check-interval=600, tolerance=0, alive-checking=false, img-url=https://ghps.cc/https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png
+url-latency-benchmark=英国, server-tag-regex=英国|UK|🇬🇧, check-interval=600, tolerance=0, alive-checking=false, img-url=https://ghps.cc/https://raw.githubusercontent.com/Orz-3/mini/master/Color/UK.png
 
 [rewrite_remote]
-https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rewrite/QuantumultX/Redirect/Redirect.conf, tag=重定向, update-interval=172800, opt-parser=false, enabled=true
 https://ghproxy.com/https://github.com/chavyleung/scripts/raw/master/box/rewrite/boxjs.rewrite.quanx.conf, tag=boxjs, update-interval=172800, opt-parser=false, enabled=true
+https://ghproxy.com/https://github.com/sub-store-org/Sub-Store/blob/master/config/QX.snippet, tag=sub-store, update-interval=172800, opt-parser=false, enabled=true
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rewrite/QuantumultX/Redirect/Redirect.conf, tag=重定向, update-interval=172800, opt-parser=false, enabled=true
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/startup/startup.qxrewrite, tag=开屏去广告, update-interval=86400, opt-parser=false, enabled=true
 https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu_plus.qxrewrite, tag=知乎助手_去广告及体验增强, update-interval=86400, opt-parser=false, enabled=true
 https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/bilibili/bilibili_plus.qxrewrite, tag=哔哩哔哩_去广告, update-interval=86400, opt-parser=false, enabled=true
-https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/startup/startup.qxrewrite, tag=开屏去广告, enabled=true
+https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/blbl.qxrewrite, tag=哔哩哔哩_解锁, update-interval=86400, opt-parser=false, enabled=true
 
 [rewrite_local]
 

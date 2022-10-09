@@ -25,7 +25,7 @@ http:
     
 script-providers:
   bilifj:
-    url: https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/js/backup/bilifj.js
+    url: https://ghps.cc/https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/js/backup/bilifj.js
     interval:  86400
   blbl:
     url: http://ox.xmkczs.com/quantumultX/blbl.js
