@@ -1,0 +1,15 @@
+#!name=京东比价
+#!desc=京东比价
+#!system=ios
+
+# stash 复写链接 https://ghproxy.com/https://raw.githubusercontent.com/jnlaoshu/MySelf/main/Stash/Script/JDPrice.stoverride
+# QX 重写链接 https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/jd_price.qxrewrite
+# 小火箭 模块链接 https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/jd_price.sgmodule
+
+
+
+[Script]
+京东比价 = type=http-response,requires-body=1,max-size=0,pattern=^https?://api\.m\.jd\.com/(client\.action|api)\?functionId=(wareBusiness|serverConfig|basicConfig|lite_wareBusiness|pingou_item),script-path=https://ghproxy.com/https://raw.githubusercontent.com/jnlaoshu/MySelf/main/Script/JDPrice.js
+
+[MITM]
+hostname = %APPEND% api.m.jd.com
