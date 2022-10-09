@@ -1,0 +1,13 @@
+# stash 复写链接 https://ghproxy.com/https://raw.githubusercontent.com/jnlaoshu/MySelf/main/Stash/Script/YouTubeAdblock.stoverride
+# QX 重写链接 https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/YouTubeAdblock.qxrewrite
+# 小火箭 模块链接 https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/YouTubeAdblock.sgmodule
+
+
+(^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) url 302 $1$2$3
+^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad url reject
+^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v\d\/player\/ad_break url reject
+^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads url reject
+^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) url reject
+^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext url reject
+
+hostname = -redirector*.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com
