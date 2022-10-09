@@ -4,8 +4,6 @@
 
 [Script]
 解锁B站高画质 = type=http-response,requires-body=1,max-size=0,pattern=^https:\/\/ap(p|i)\.bilibili\.com\/((pgc\/player\/api\/playurl)|(x\/v2\/account\/myinfo\?)|(x\/v2\/account/mine\?)),script-path=https://ghps.cc/https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/js/backup/bilifj.js
-解锁B站 = type=http-response,requires-body=1,max-size=0,pattern=^https:\/\/biliapi\..+\.com\/api\/app\/user\/info,script-path=http://ox.xmkczs.com/quantumultX/blbl.js
-解锁B站s = type=http-request,requires-body=1,max-size=0,pattern=^https:\/\/biliapi\..+\.com\/api\/app\/.+,script-path=http://ox.xmkczs.com/quantumultX/blbls.js
 
 [MITM]
-hostname = %APPEND% api.bilibili.com, app.bilibili.com, biliapi.*.com
+hostname = %APPEND% api.bilibili.com, app.bilibili.com
