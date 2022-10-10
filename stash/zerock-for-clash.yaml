@@ -7,12 +7,9 @@ log-level: info
 external-controller: 0.0.0.0:9090
 
 dns:
-  default-nameserver:
+  nameserver:
     - 223.5.5.5
     - 119.29.29.29
-  nameserver:
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
   fake-ip-filter:
     # from: https://github.com/Kr328/ClashForAndroid/blob/ffa559a57102ed8bc20eba41aa236a7764741bf9/core/src/main/golang/native/config/defaults.go#L10
     # Stun Services
@@ -54,7 +51,7 @@ proxy-providers:
     <<: *remote-resources-default-config
     # 此处默认使用 Sub-Store 订阅链接，如果需要使用其他订阅链接，可以替换下面的 url 即可
     # Sub-Store 与 Clash 类型订阅链接，都可以作为 url 的值。多个链接使用英文符号的竖杠 | 隔开一起写上即可
-    url: sub-for-clash
+    url: # 我是订阅链接
     path: ./all.yaml
     health-check:
       enable: true
@@ -124,17 +121,9 @@ rule-providers:
     path: ./ruleset/zerock.yaml
 
 proxy-groups:
-  - name: 默认可用
-    type: fallback
-    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Bypass.png?raw=true
-    url: https://captive.apple.com
-    interval: 300
-    use:
-      - all-sub
-
   - name: 延迟最低
     type: url-test
-    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Auto.png?raw=true
+    icon: https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Auto_Speed.png
     url: https://captive.apple.com
     interval: 300
     use:
@@ -142,60 +131,108 @@ proxy-groups:
 
   - name: 手动选择
     type: select
-    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Rocket.png?raw=true
+    icon: https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Select.png
     proxies:
-      - 默认可用
       - 延迟最低
+      - 🇺🇸 美国
+      - 🇭🇰 香港
+      - 🇸🇬 新加坡
+      - 🇯🇵 日本
+      - 🇬🇧 英国
       - DIRECT
     use:
       - all-sub
 
   - name: 全球直连
     type: select
-    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/China_Map.png?raw=true
+    icon: https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/NextDoor.png
     proxies: &global-direct
       - DIRECT
       - 手动选择
 
   - name: 自用直连
     type: select
-    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Direct.png?raw=true
+    icon: https://ghproxy.com/https://raw.githubusercontent.com/Yuanxsxs/QtumultX/master/Icon/JiuMei-icon/quanX/Advertising.png
     proxies:
       *global-direct
 
   - name: 苹果服务
     type: select
-    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Apple.png?raw=true
+    icon: https://ghproxy.com/https://raw.githubusercontent.com/Yuanxsxs/QtumultX/master/Icon/JiuMei-icon/quanX/Apple.png
     proxies:
       *global-direct
 
   - name: 广告拦截
     type: select
-    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Advertising.png?raw=true
+    icon: https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Reject.orig.png
     proxies:
       - REJECT
       - DIRECT
 
   - name: 全球代理
     type: select
-    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Global.png?raw=true
+    icon: https://ghproxy.com/https://raw.githubusercontent.com/Yuanxsxs/QtumultX/master/Icon/JiuMei-icon/quanX/Gwwz.png
     proxies: &global-proxy
       - 手动选择
       - DIRECT
 
   - name: 电报信息
     type: select
-    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Telegram.png?raw=true
+    icon: https://ghproxy.com/https://raw.githubusercontent.com/Yuanxsxs/QtumultX/master/Icon/JiuMei-icon/quanX/Telegram.png
     proxies:
       *global-proxy
 
   - name: 漏网之鱼
     type: select
-    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Final.png?raw=true
+    icon: https://ghproxy.com/https://raw.githubusercontent.com/Yuanxsxs/QtumultX/master/Icon/JiuMei-icon/quanX/Final.png
     proxies:
       - 手动选择
       - DIRECT
 
+  - name: 🇺🇸 美国
+    type: url-test
+    icon: https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/United_States.png
+    url: https://captive.apple.com
+    interval: 300
+    use:
+      - all-sub
+    filter: "美国|🇺🇲|US"
+
+  - name: 🇭🇰 香港
+    type: url-test
+    icon: https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Hong_Kong.png
+    url: https://captive.apple.com
+    interval: 300
+    use:
+      - all-sub
+    filter: "香港|🇭🇰|HK"
+
+  - name: 🇯🇵 日本
+    type: url-test
+    icon: https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Japan.png
+    url: https://captive.apple.com
+    interval: 300
+    use:
+      - all-sub
+    filter: "日本|🇯🇵|JP"
+
+  - name: 🇸🇬 新加坡
+    type: url-test
+    icon: https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Singapore.png
+    url: https://captive.apple.com
+    interval: 300
+    use:
+      - all-sub
+    filter: "新加坡|🇸🇬|SG"
+
+  - name: 🇬🇧 英国
+    type: url-test
+    icon: https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/United_Kingdom.png
+    url: https://captive.apple.com
+    interval: 300
+    use:
+      - all-sub
+    filter: "英国|🇬🇧|UK"
 
 
 rules:
