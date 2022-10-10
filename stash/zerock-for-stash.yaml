@@ -1,4 +1,4 @@
-# update-url: https://cdn.staticaly.com/gh/justzerock/scripts/master/stash/zerock-for-stash.yaml
+# update-url: https://raw.githubusercontent.com/justzerock/scripts/master/stash/zerock-for-stash.yaml
 
 mode: rule
 log-level: info
