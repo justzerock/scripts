@@ -6,12 +6,12 @@ http:
     - "buy.itunes.apple.com"
   script:
     - match: ^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt
-      name: oldroll
+      name: old
       type: response
       require-body: true
       timeout: 10
     
 script-providers:
-  oldroll:
+  old:
     url: https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/old.js
     interval:  86400
