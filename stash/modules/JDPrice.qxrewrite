@@ -1,9 +1,4 @@
 # 京东比价
-# stash 复写链接 https://ghproxy.com/https://raw.githubusercontent.com/jnlaoshu/MySelf/main/Stash/Script/JDPrice.stoverride
-# QX 重写链接 https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/modules/JDPrice.qxrewrite
-# 小火箭 模块链接 https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/modules/JDPrice.sgmodule
-
-
 ^https?://api\.m\.jd\.com/(client\.action|api)\?functionId=(wareBusiness|serverConfig|basicConfig|lite_wareBusiness|pingou_item) url script-response-body https://ghproxy.com/https://raw.githubusercontent.com/jnlaoshu/MySelf/main/Script/JDPrice.js
 
 hostname = api.m.jd.com
