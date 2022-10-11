@@ -1,3 +1,15 @@
+/******************************
+
+[rewrite_local]
+
+^https:\/\/ap(p|i)\.bilibili\.com\/((pgc\/player\/api\/playurl)|(x\/v2\/account\/myinfo\?)|(x\/v2\/account/mine\?)) url script-response-body https://raw.githubusercontent.com/justzerock/scripts/master/stash/scripts/biliHD.js
+
+[mitm] 
+
+hostname = api.bilibili.com, app.bilibili.com
+
+*******************************/
+
 /*
 bilibili fan drama open 1080P+
 

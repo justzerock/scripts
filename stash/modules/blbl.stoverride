@@ -14,5 +14,5 @@ http:
     
 script-providers:
   biliHD:
-    url: https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/biliHD.js
+    url: https://raw.githubusercontent.com/justzerock/scripts/master/stash/scripts/biliHD.js
     interval:  86400

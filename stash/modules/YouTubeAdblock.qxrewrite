@@ -1,6 +1,6 @@
 # stash 复写链接 https://ghproxy.com/https://raw.githubusercontent.com/jnlaoshu/MySelf/main/Stash/Script/YouTubeAdblock.stoverride
-# QX 重写链接 https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/YouTubeAdblock.qxrewrite
-# 小火箭 模块链接 https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/YouTubeAdblock.sgmodule
+# QX 重写链接 https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/modules/YouTubeAdblock.qxrewrite
+# 小火箭 模块链接 https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/modules/YouTubeAdblock.sgmodule
 
 
 (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) url 302 $1$2$3

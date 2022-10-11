@@ -39,7 +39,7 @@ url-latency-benchmark=英国, server-tag-regex=英国|UK|🇬🇧, check-interva
 [rewrite_remote]
 https://ghproxy.com/https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Rewrite/Block/YouTubeAds.conf, tag=油管广告, update-interval=172800, opt-parser=false, enabled=true
 https://ghproxy.com/https://raw.githubusercontent.com/id77/QuantumultX/master/rewrite/Youtube_CC.conf#out=Hant, tag=油管机翻简体, update-interval=172800, opt-parser=true, enabled=true
-https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/jd_price.qxrewrite, tag=京东比价, update-interval=172800, opt-parser=false, enabled=true
+https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/modules/jd_price.qxrewrite, tag=京东比价, update-interval=172800, opt-parser=false, enabled=true
 https://ghproxy.com/https://raw.githubusercontent.com/NobyDa/Script/master/TestFlight/TestFlightAccount.js, tag=TF 账号管理器, update-interval=172800, opt-parser=true, enabled=true
 https://ghproxy.com/https://github.com/chavyleung/scripts/raw/master/box/rewrite/boxjs.rewrite.quanx.conf, tag=boxjs, update-interval=172800, opt-parser=false, enabled=true
 https://ghproxy.com/https://github.com/sub-store-org/Sub-Store/blob/master/config/QX.snippet, tag=sub-store, update-interval=172800, opt-parser=false, enabled=true
@@ -47,7 +47,7 @@ https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_scri
 https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/startup/startup.qxrewrite, tag=开屏去广告, update-interval=86400, opt-parser=false, enabled=true
 https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu_plus.qxrewrite, tag=知乎助手_去广告及体验增强, update-interval=86400, opt-parser=false, enabled=true
 https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/bilibili/bilibili_plus.qxrewrite, tag=哔哩哔哩_去广告, update-interval=86400, opt-parser=false, enabled=true
-https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/blbl.qxrewrite, tag=哔哩哔哩_解锁, update-interval=86400, opt-parser=false, enabled=true
+https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/modules/blbl.qxrewrite, tag=哔哩哔哩_解锁, update-interval=86400, opt-parser=false, enabled=true
 
 [rewrite_local]
 
@@ -55,7 +55,7 @@ https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/
 [filter_remote]
 https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Direct/Direct.list, tag=直连, force-policy=全球直连, update-interval=172800, opt-parser=false, enabled=true
 https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/ChinaMax/ChinaMax.list, tag=中国, force-policy=全球直连, update-interval=172800, opt-parser=false, enabled=true
-https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/direct.list, tag=自用直连, force-policy=自用直连, update-interval=172800, opt-parser=false, enabled=true
+https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/rules/direct.list, tag=自用直连, force-policy=自用直连, update-interval=172800, opt-parser=false, enabled=true
 https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Apple/Apple.list, tag=苹果, force-policy=苹果服务, update-interval=172800, opt-parser=false, enabled=true
 https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Advertising/Advertising.list, tag=广告, force-policy=广告拦截, update-interval=172800, opt-parser=false, enabled=true
 https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Global/Global.list, tag=全球, force-policy=全球代理, update-interval=172800, opt-parser=false, enabled=true

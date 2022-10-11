@@ -1,0 +1,19 @@
+name: 解锁fileball
+desc: 解锁fileball
+# 小火箭 https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/modules/fileball.module
+# QX 引用重写+资源解析器 https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/fileball.js
+
+http:
+  mitm:
+    - "api.revenuecat.com"
+  script:
+    - match: ^https?:\/\/api\.revenuecat\.com\/v1\/(receipts|subscribers\/\$RCAnonymousID%3A\w{32})$
+      name: fileball
+      type: response
+      require-body: true
+      timeout: 10
+    
+script-providers:
+  fileball:
+    url: https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/fileball.js
+    interval:  86400
