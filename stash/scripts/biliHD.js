@@ -1,4 +1,7 @@
 /******************************
+bilibili fan drama open 1080P+
+
+From https://github.com/Sunert/Scripts/blob/master/Script/Bilibili/BiliHD.js
 
 [rewrite_local]
 
@@ -9,17 +12,6 @@
 hostname = api.bilibili.com, app.bilibili.com
 
 *******************************/
-
-/*
-bilibili fan drama open 1080P+
-
-From https://github.com/Sunert/Scripts/blob/master/Script/Bilibili/BiliHD.js
-
-QX:
-https:\/\/ap(p|i)\.bilibili\.com\/((pgc\/player\/api\/playurl)|(x\/v2\/account\/myinfo\?)|(x\/v2\/account/mine\?)) url script-response-body BiliHD.js
-
-QX MITM = api.bilibili.com
-*/
 
 var body = $response.body;
 var url = $request.url;
