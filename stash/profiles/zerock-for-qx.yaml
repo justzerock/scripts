@@ -1,4 +1,4 @@
-# update_url: https://raw.githubusercontent.com/justzerock/scripts/master/stash/zerock-for-qx.yaml
+# update_url: https://raw.githubusercontent.com/justzerock/scripts/master/stash/profiles/zerock-for-qx.yaml
 # 图标集1 https://raw.githubusercontent.com/Yuanxsxs/QtumultX/master/Icon/Semporia.json
 # 图标集2 https://raw.githubusercontent.com/Yuanxsxs/QtumultX/master/Icon/Icon_JiuMei-icon_quanX.json
 
@@ -21,7 +21,7 @@ https://sub.store/download/collection/server-group, tag=SubStore, img-url=https:
 
 [policy]
 url-latency-benchmark=延迟最低, resource-tag-regex=^*, check-interval=600, tolerance=0, alive-checking=false, img-url=https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Auto_Speed.png
-static=手动选择, 延迟最低, 美国, 香港, 台湾, 日本, 新加坡, 英国, direct, server-tag-regex=^*, img-url=https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Select.png
+static=手动选择, 延迟最低, 美国, 香港, 台湾, 日本, 新加坡, 英国, GlaDOS, 一元机场, PUREFAST, IKUUU VPN, FreeFQ, direct, server-tag-regex=^*, img-url=https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Select.png
 static=全球直连, direct, 手动选择, img-url=https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/NextDoor.png
 static=自用直连, direct, 手动选择, img-url=https://ghproxy.com/https://raw.githubusercontent.com/Yuanxsxs/QtumultX/master/Icon/JiuMei-icon/quanX/Advertising.png
 static=苹果服务, direct, 手动选择, img-url=https://ghproxy.com/https://raw.githubusercontent.com/Yuanxsxs/QtumultX/master/Icon/JiuMei-icon/quanX/Apple.png
@@ -35,19 +35,25 @@ url-latency-benchmark=台湾, server-tag-regex=台湾|TW, check-interval=600, to
 url-latency-benchmark=日本, server-tag-regex=日本|JP|🇯🇵, check-interval=600, tolerance=0, alive-checking=false, img-url=https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Japan.png
 url-latency-benchmark=新加坡, server-tag-regex=新加坡|SG|🇸🇬, check-interval=600, tolerance=0, alive-checking=false, img-url=https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Singapore.png
 url-latency-benchmark=英国, server-tag-regex=英国|UK|🇬🇧, check-interval=600, tolerance=0, alive-checking=false, img-url=https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/United_Kingdom.png
+url-latency-benchmark=GlaDOS, server-tag-regex=(?i)glados, check-interval=600, tolerance=0, alive-checking=false
+url-latency-benchmark=一元机场, server-tag-regex=一元, check-interval=600, tolerance=0, alive-checking=false
+url-latency-benchmark=PUREFAST, server-tag-regex=purefast, check-interval=600, tolerance=0, alive-checking=false
+url-latency-benchmark=IKUUU VPN, server-tag-regex=iku, check-interval=600, tolerance=0, alive-checking=false
+url-latency-benchmark=FreeFQ, server-tag-regex=free, check-interval=600, tolerance=0, alive-checking=false
 
 [rewrite_remote]
-https://ghproxy.com/https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Rewrite/Block/YouTubeAds.conf, tag=油管广告, update-interval=172800, opt-parser=false, enabled=true
-https://ghproxy.com/https://raw.githubusercontent.com/id77/QuantumultX/master/rewrite/Youtube_CC.conf#out=Hant, tag=油管机翻简体, update-interval=172800, opt-parser=true, enabled=true
-https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/modules/jd_price.qxrewrite, tag=京东比价, update-interval=172800, opt-parser=false, enabled=true
-https://ghproxy.com/https://raw.githubusercontent.com/NobyDa/Script/master/TestFlight/TestFlightAccount.js, tag=TF 账号管理器, update-interval=172800, opt-parser=true, enabled=true
-https://ghproxy.com/https://github.com/chavyleung/scripts/raw/master/box/rewrite/boxjs.rewrite.quanx.conf, tag=boxjs, update-interval=172800, opt-parser=false, enabled=true
-https://ghproxy.com/https://github.com/sub-store-org/Sub-Store/blob/master/config/QX.snippet, tag=sub-store, update-interval=172800, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/old.js, tag=old roll 复古相机, update-interval=172800, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/modules/fileball.module, tag=fileball 播放器, update-interval=172800, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Rewrite/Block/YouTubeAds.conf, tag=油管广告, update-interval=172800, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/id77/QuantumultX/master/rewrite/Youtube_CC.conf#out=Hant, tag=油管机翻简体, update-interval=172800, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/justzerock/scripts/master/stash/modules/JDPrice.qxrewrite, tag=京东比价, update-interval=172800, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/NobyDa/Script/master/TestFlight/TestFlightAccount.js, tag=TF 账号管理器, update-interval=172800, opt-parser=true, enabled=true
+https://github.com/chavyleung/scripts/raw/master/box/rewrite/boxjs.rewrite.quanx.conf, tag=boxjs, update-interval=172800, opt-parser=false, enabled=true
+https://ghproxy.com/https://github.com/sub-store-org/Sub-Store/blob/master/config/QX.snippet, tag=sub-store 本地订阅, update-interval=172800, opt-parser=false, enabled=true
 https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rewrite/QuantumultX/Redirect/Redirect.conf, tag=重定向, update-interval=172800, opt-parser=false, enabled=true
 https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/startup/startup.qxrewrite, tag=开屏去广告, update-interval=86400, opt-parser=false, enabled=true
 https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu_plus.qxrewrite, tag=知乎助手_去广告及体验增强, update-interval=86400, opt-parser=false, enabled=true
 https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/bilibili/bilibili_plus.qxrewrite, tag=哔哩哔哩_去广告, update-interval=86400, opt-parser=false, enabled=true
-https://ghproxy.com/https://raw.githubusercontent.com/justzerock/scripts/master/stash/modules/blbl.qxrewrite, tag=哔哩哔哩_解锁, update-interval=86400, opt-parser=false, enabled=true
 
 [rewrite_local]
 

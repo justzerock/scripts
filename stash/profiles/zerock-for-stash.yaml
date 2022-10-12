@@ -1,4 +1,4 @@
-# update-url: https://raw.githubusercontent.com/justzerock/scripts/master/stash/zerock-for-stash.yaml
+# update-url: https://raw.githubusercontent.com/justzerock/scripts/master/stash/profiles/zerock-for-stash.yaml
 
 mode: rule
 log-level: info
@@ -139,6 +139,11 @@ proxy-groups:
       - 🇸🇬 新加坡
       - 🇯🇵 日本
       - 🇬🇧 英国
+      - GlaDOS
+      - 一元机场
+      - PUREFAST
+      - IKUUU VPN
+      - FreeFQ
       - DIRECT
     use:
       - all-sub
@@ -235,6 +240,45 @@ proxy-groups:
     filter: "英国|🇬🇧|UK"
 
 
+  - name: GlaDOS
+    type: url-test
+    url: https://captive.apple.com
+    interval: 300
+    use:
+      - all-sub
+    filter: "(?i)glados"
+
+  - name: 一元机场
+    type: url-test
+    url: https://captive.apple.com
+    interval: 300
+    use:
+      - all-sub
+    filter: "一元"
+
+  - name: PUREFAST
+    type: url-test
+    url: https://captive.apple.com
+    interval: 300
+    use:
+      - all-sub
+    filter: "purefast"
+
+  - name: IKUUU VPN
+    type: url-test
+    url: https://captive.apple.com
+    interval: 300
+    use:
+      - all-sub
+    filter: "iku"
+
+  - name: FreeFQ
+    type: url-test
+    url: https://captive.apple.com
+    interval: 300
+    use:
+      - all-sub
+    filter: "free"
 
 rules:
   - SCRIPT,quic,REJECT
