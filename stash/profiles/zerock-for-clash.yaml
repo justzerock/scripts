@@ -123,7 +123,6 @@ rule-providers:
 proxy-groups:
   - name: 延迟最低
     type: url-test
-    icon: https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Auto_Speed.png
     url: https://captive.apple.com
     interval: 300
     use:
@@ -131,7 +130,6 @@ proxy-groups:
 
   - name: 手动选择
     type: select
-    icon: https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Select.png
     proxies:
       - 延迟最低
       - 🇺🇸 美国
@@ -150,53 +148,45 @@ proxy-groups:
 
   - name: 全球直连
     type: select
-    icon: https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/NextDoor.png
     proxies: &global-direct
       - DIRECT
       - 手动选择
 
   - name: 自用直连
     type: select
-    icon: https://ghproxy.com/https://raw.githubusercontent.com/Yuanxsxs/QtumultX/master/Icon/JiuMei-icon/quanX/Advertising.png
     proxies:
       *global-direct
 
   - name: 苹果服务
     type: select
-    icon: https://ghproxy.com/https://raw.githubusercontent.com/Yuanxsxs/QtumultX/master/Icon/JiuMei-icon/quanX/Apple.png
     proxies:
       *global-direct
 
   - name: 广告拦截
     type: select
-    icon: https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Reject.orig.png
     proxies:
       - REJECT
       - DIRECT
 
   - name: 全球代理
     type: select
-    icon: https://ghproxy.com/https://raw.githubusercontent.com/Yuanxsxs/QtumultX/master/Icon/JiuMei-icon/quanX/Gwwz.png
     proxies: &global-proxy
       - 手动选择
       - DIRECT
 
   - name: 电报信息
     type: select
-    icon: https://ghproxy.com/https://raw.githubusercontent.com/Yuanxsxs/QtumultX/master/Icon/JiuMei-icon/quanX/Telegram.png
     proxies:
       *global-proxy
 
   - name: 漏网之鱼
     type: select
-    icon: https://ghproxy.com/https://raw.githubusercontent.com/Yuanxsxs/QtumultX/master/Icon/JiuMei-icon/quanX/Final.png
     proxies:
       - 手动选择
       - DIRECT
 
   - name: 🇺🇸 美国
     type: url-test
-    icon: https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/United_States.png
     url: https://captive.apple.com
     interval: 300
     use:
@@ -205,7 +195,6 @@ proxy-groups:
 
   - name: 🇭🇰 香港
     type: url-test
-    icon: https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Hong_Kong.png
     url: https://captive.apple.com
     interval: 300
     use:
@@ -214,7 +203,6 @@ proxy-groups:
 
   - name: 🇯🇵 日本
     type: url-test
-    icon: https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Japan.png
     url: https://captive.apple.com
     interval: 300
     use:
@@ -223,7 +211,6 @@ proxy-groups:
 
   - name: 🇸🇬 新加坡
     type: url-test
-    icon: https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Singapore.png
     url: https://captive.apple.com
     interval: 300
     use:
@@ -232,7 +219,6 @@ proxy-groups:
 
   - name: 🇬🇧 英国
     type: url-test
-    icon: https://ghproxy.com/https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/United_Kingdom.png
     url: https://captive.apple.com
     interval: 300
     use:
