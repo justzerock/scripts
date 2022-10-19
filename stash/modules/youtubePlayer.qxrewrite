@@ -1,0 +1,6 @@
+# YouTube 贴片广告 原模块：https://github.com/Maasea/sgmodule/blob/master/youtubePlayer.sgmodule?raw=true
+
+^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/player url script-response-body https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube-player.js
+^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad url script-request-header https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube-fake.js
+
+hostname = -redirector*.googlevideo.com, *.googlevideo.com, youtubei.googleapis.com
