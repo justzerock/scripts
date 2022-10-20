@@ -1,0 +1,16 @@
+#!name=m3u8.tv vip 解析
+#!desc=m3u8.tv vip 解析
+#!system=ios
+
+[URL Rewrite]
+# > 04 爱奇艺
+(^https?:\/\/m\.iqiyi\.com\/v_.*) https://jx.m3u8.tv/jiexi/?url=$1 307
+# > 03 优酷视频
+(^https?:\/\/m\.youku\.com\/.*) https://jx.m3u8.tv/jiexi/?url=$1 307
+# > 02 腾讯视频
+(^https?:\/\/m\.v\.qq\.com\/x\/(m\/)?play.*) https://jx.m3u8.tv/jiexi/?url=$1 307
+# > 01 哔哩哔哩
+(^https?:\/\/m\.bilibili\.com\/bangumi\/play\/.*) https://jx.m3u8.tv/jiexi/?url=$1 307
+
+[MITM]
+hostname = %APPEND% m.iqiyi.com,m.youku.com,m.v.qq.com,m.bilibili.com
