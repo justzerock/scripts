@@ -1,4 +1,4 @@
 payload:
-  - '+.emby.wtf'
   - '+.zerock.top'
+  - '+.kgithub.com'
   
