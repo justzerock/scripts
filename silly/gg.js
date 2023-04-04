@@ -62,13 +62,13 @@ function main() {
     })
     if (data) {
       if (!data.searchInformation.totalResults) {
-        answer = '🦊 找不到你想看的。可以去茶杯狐找找 https://cupfox.app 👈 复制链接到浏览器打开'
+        answer = '📽️ https://ddys.site 👈 低端影视，建议收藏\n📱 百G流量低价月租 https://ka.zerock.top 选张适合你的卡吧'
       } else {
         answer = '👉 复制链接到浏览器打开\n🤝 打不开的链接，反馈直接发「留言 + 链接」\n\n'
         data.items.forEach((res, index) => {
-          answer += (index + 1) + '、' + res.title + '\n链接：' + res.link + '\n\n'
+          answer += (index + 1) + '、' + res.title + '\n' + res.link + '\n\n'
         });
-        answer += '\n🦊 要是没有你想要的结果，可以去茶杯狐找找 https://cupfox.app 👈 复制链接到浏览器打开'
+        answer += '\n📽️ https://ddys.site 👈 低端影视，建议收藏\n📱 百G流量低价月租 https://ka.zerock.top 选张适合你的卡吧'
       }
       gapi[cur].times += 1
       set('g_cur', cur)
@@ -97,13 +97,13 @@ function main() {
     })
     if (data) {
       if (!data.total) {
-        answer = '🦊 找不到你想看的。可以去茶杯狐找找 https://cupfox.app 👈 复制链接到浏览器打开'
+        answer = '📽️ https://ddys.site 👈 低端影视，建议收藏\n📱 百G流量低价月租 https://ka.zerock.top 选张适合你的卡吧'
       } else {
         answer = '👉 复制链接到浏览器打开(备用接口)\n\n'
         data.results.forEach((res, index) => {
-          answer += (index + 1) + '、' + res.title + '\n链接：' + res.link + '\n\n'
+          answer += (index + 1) + '、' + res.title + '\n' + res.link + '\n\n'
         });
-        answer += '\n🦊 要是没有你想要的结果，可以去茶杯狐找找 https://cupfox.app 👈 复制链接到浏览器打开'
+        answer += '\n📽️ https://ddys.site 👈 低端影视，建议收藏\n📱 百G流量低价月租 https://ka.zerock.top 选张适合你的卡吧'
       }
       rapi[0].times += 1
       set('r_month', usedMonth)

@@ -1,0 +1,14 @@
+#!name=京东比价
+#!desc=历史价格
+#!homepage=https://raw.githubusercontent.com/justzerock/scripts/master/stash/modules/JDPrice.plugin
+#!author=
+#!icon=
+
+[Script]
+
+# 京东比价
+http-response ^https?://api\.m\.jd\.com/(client\.action|api)\?functionId=(wareBusiness|serverConfig|basicConfig|lite_wareBusiness|pingou_item) script-path=https://ghproxy.com/https://raw.githubusercontent.com/jnlaoshu/MySelf/main/Script/JDPrice.js, requires-body=true, timeout=10, tag=JDPrice
+
+[MITM]
+
+hostname = api.m.jd.com
