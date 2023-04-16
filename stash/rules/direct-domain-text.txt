@@ -1,4 +1,4 @@
-.zerock.top
+zerock.top
 region1.v2.argotunnel.com
 region2.v2.argotunnel.com
 api.cloudflare.com
