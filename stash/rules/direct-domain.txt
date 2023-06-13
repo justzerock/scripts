@@ -1,5 +1,6 @@
 payload:
   - '+.zerock.top'
+  - '+.dns.army'
   - '+.argotunnel.com'
   - '+.kgithub.com'
   
