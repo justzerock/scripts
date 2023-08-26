@@ -5,7 +5,7 @@
 #!homepage = https://gitlab.com/lodepuly/vpn_tool/-/tree/main/Tool/Loon/Plugin
 #!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/master/Other_icon/120px/Sub-Store.png
 #!select = 节点缓存有效期, 1分钟, 5分钟, 10分钟, 30分钟, 1小时, 2小时, 3小时, 6小时, 12小时, 24小时, 48小时, 72小时, 参数传入
-#!date = 2023-08-16 17:35:55
+#!date = 2023-08-26 19:26:55
 
 [Rule]
 DOMAIN, sub-store.vercel.app, PROXY
