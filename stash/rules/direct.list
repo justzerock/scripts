@@ -1,2 +1,5 @@
-HOST-SUFFIX,emby.wtf,Zerock
-HOST-SUFFIX,zerock.top,Zerock
+payload:
+  - DOMAIN,zeero.dns.army
+  - DOMAIN-KEYWORD,zerock.top
+  - DOMAIN-KEYWORD,wangchuanxin.top
+  - IP-CIDR,170.187.209.211/32,no-resolve
