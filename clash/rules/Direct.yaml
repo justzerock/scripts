@@ -1,0 +1,8 @@
+payload:
+  - DOMAIN,zeero.dns.army
+  - DOMAIN-KEYWORD,zerock.top
+  - IP-CIDR,170.187.209.211/32,no-resolve
+  - IP-CIDR,198.41.0.0/16,no-resolve
+  - IP-CIDR,162.159.0.0/16,no-resolve
+  - IP-CIDR6,2606:4700:d1::/64,no-resolve
+  - IP-CIDR6,2606:4700:d0::/64,no-resolve
